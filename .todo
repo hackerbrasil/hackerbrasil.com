@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="veryhigh" time="1535544055" done="1535571880">
+        escolher qual biblioteca js vou usar
+    </note>
+    <note priority="high" time="1535544044" done="1535570858">
+        escolher qual biblioteca css vou usar
+    </note>
+    <note priority="medium" time="1535543812">
+        tela home com uma lista de links
+    </note>
+    <note priority="medium" time="1535543832">
+        adicionar navegação via teclado nos links
+    </note>
+    <note priority="medium" time="1535543849">
+        adicionar remoção de links via botão
+    </note>
+    <note priority="medium" time="1535543863">
+        adicionar remoção de links via teclado
+    </note>
+    <note priority="medium" time="1535647963">
+        adicionar ssl no hackergaucho.com.br
+    </note>
+    <note priority="medium" time="1535656050">
+        scrool infinito automatico
+    </note>
+    <note priority="medium" time="1535656068">
+        ajax para o scrool infinito paginado
+    </note>
+    <note priority="medium" time="1535656080">
+        cookies para evitar repetição de noticias
+    </note>
+    <note priority="medium" time="1535657080">
+        mostrar quanto tempo atrás o artigo foi lido pelo hb (ex: 2 horas, 3 dias, etc)
+    </note>
+</todo>
