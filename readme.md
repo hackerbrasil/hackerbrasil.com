@@ -1,2 +1,2 @@
 # Hacker Brasil 🇧🇷
-Feito com [Laravel 5.5](https://laravel.com/docs/5.5)
+Feito com ♥️ e [Laravel 5.5](https://laravel.com/docs/5.5)
