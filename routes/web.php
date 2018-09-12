@@ -15,4 +15,4 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'UserController@index');
+Route::get('/', 'HomeController@mostrarAViewHome');

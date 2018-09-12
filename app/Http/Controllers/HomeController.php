@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class HomeController extends Controller
 {
-    function index(){
+    function mostrarAViewHome(){
         $data=[
             'links'=>[
                 [
