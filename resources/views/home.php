@@ -56,27 +56,32 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/hackerbrasil/hackerbrasil/master/public/js/keynavigator.min.js" integrity="sha384-7/yFCCASGxu6NLsbLH2SqRBxT7A7ADzT21wRrSrXF5oXkJGi4+jHuFeQvU9svbNB" crossorigin="anonymous"></script>
     <script type="text/javascript">
+    //variaveis
+    //https://github.com/nekman/keynavigator
+    var listaDeLinks=$('#listaDeLinks tbody tr');
+    listaDeLinks.keynavigator();
+    var primeiroLinkDaLista=$('#listaDeLinks tr:first-child');
+
     //funções
     function removerLink(id){
-        var $element = $('#'+id);
-        $element.fadeOut(500,function(){
-            $element.hide()
+        var link = $('#'+id);
+        link.fadeOut(500,function(){
+            link.hide(function(link){
+                listaDeLinks=$('#listaDeLinks tbody tr');
+                var index = listaDeLinks.index(link) + 1;
+                listaDeLinks.eq(index).trigger('click')
+            });
         });
     }
+
     //eventos
     $(function(){
-        //variaveis
-        //https://github.com/nekman/keynavigator
-        var listaDeLinks=$('#listaDeLinks tbody tr').keynavigator();
-        var primeiroLinkDaLista=$('#listaDeLinks tr:first-child');
         //eventos
-        listaDeLinks.keynavigator.setActive(primeiroLinkDaLista);
         primeiroLinkDaLista.trigger('click');
-
         $(document).bind('keydown',function(e){
             if(e.keyCode == 88) {
-                $el=$('#listaDeLinks tbody .active')
-                alert($el.attr('id'));
+                link=$('#listaDeLinks tbody .active');
+                removerLink(link.attr('id'));
             }
         });
     });
