@@ -1,19 +1,4 @@
 <?php
-// Use Medoo namespace
-use Medoo\Medoo;
-
-// Register as database
-$app->singleton('database', function () {
-    return new Medoo([
-        'database_type' => $_ENV["DB_CONNECTION"],
-        'database_name' => $_ENV["DB_DATABASE"],
-        'server' => $_ENV["DB_HOST"],
-        'username' => $_ENV["DB_USERNAME"],
-        'password' => $_ENV["DB_PASSWORD"]
-    ]);
-});
-
-
 return [
 
     /*
@@ -190,7 +175,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\MedooCustomServiceProvider::class,
 
     ],
 
@@ -226,7 +210,6 @@ return [
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
-        'Medoo' =>App\Custom\Facades\MedooCustom::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,

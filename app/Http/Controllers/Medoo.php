@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Custom\Classes;
+namespace App\Http\Controllers;
 
-use Medoo\Medoo;
+use Medoo\Medoo as DB;
 
-class MedooCustom
+class Medoo extends DB
 {
-    public function start()
-    {
-        return new Medoo([
+    function __construct(){
+        return parent::__construct([
             'database_type' => $_ENV["DB_CONNECTION"],
             'database_name' => $_ENV["DB_DATABASE"],
             'server' => $_ENV["DB_HOST"],
