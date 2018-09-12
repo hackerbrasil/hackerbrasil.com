@@ -39,7 +39,9 @@
                     print '<td>'.$link['title'].'</td>';
                     print '<td>'.$link['created_at'].'</td>';
                     print '<td class="text-right align-middle">';
-                    print '<a href="javascript:void(0);" onclick="removerLink($(this).closest(\'tr\').attr(\'id\'));" class="fas fa-times"></a>';
+                    print '<a class="badge badge-danger" href="javascript:void(0);" onclick="removerLink($(this).closest(\'tr\').attr(\'id\'));">';
+                    print '<i class="fas fa-times"></i>';
+                    print '</a>';
                     print '</td>';
                     print '</tr>';
                 }
@@ -79,7 +81,7 @@
 
     //funções
     function removerLink(id){
-        alert(id);
+        $('#'+id).hide();
     }
 
     //eventos
