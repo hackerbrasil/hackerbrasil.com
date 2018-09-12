@@ -52,57 +52,34 @@
             </tbody>
         </table>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdn.rawgit.com/hackerbrasil/hackerbrasil/master/public/js/keynavigator.min.js"></script>
+    <script src="https://cdn.rawgit.com/hackerbrasil/hackerbrasil/master/public/js/keynavigator.min.js" integrity="sha384-7/yFCCASGxu6NLsbLH2SqRBxT7A7ADzT21wRrSrXF5oXkJGi4+jHuFeQvU9svbNB" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    //   $(function() {
-    //   var $listaDeLinks = $('table > tbody tr').keynavigator({
-    //     // Don't activate on anything...
-    //     activateOn: ''
-    //   });
-    //
-    //   // Handle activation your self.
-    //   $listaDeLinks.find('td').on('click', function(e) {
-    //     var $input = $(this),
-    //         $selectedRow = $input.closest('tr');
-    //
-    //     $listaDeLinks.keynavigator.setActive($selectedRow);
-    //
-    //     // Keep focus on input
-    //     $input.focus();
-    //
-    //     // Stop event bubbling
-    //     e.stopPropagation();
-    //   });
-    // });
-    //https://github.com/nekman/keynavigator
-
-    //variaveis
-    var listaDeLinks=$('#listaDeLinks > tbody tr').keynavigator();
-    var primeiroLinkDaLista=$('.primeiroLinkDaLista:first-child');
-
     //funções
     function removerLink(id){
-
-
         var $element = $('#'+id);
-
         $element.fadeOut(500,function(){
             $element.hide()
         });
     }
-    $(document).ready(function() {
-        var mydiv = $('.mydiv');
+    //eventos
+    $(function(){
+        //variaveis
+        //https://github.com/nekman/keynavigator
+        var listaDeLinks=$('#listaDeLinks tbody tr').keynavigator();
+        var primeiroLinkDaLista=$('#listaDeLinks tr:first-child');
+        //eventos
+        listaDeLinks.keynavigator.setActive(primeiroLinkDaLista);
+        primeiroLinkDaLista.trigger('click');
+
         $(document).bind('keydown',function(e){
             if(e.keyCode == 88) {
-                mydiv.fadeIn();
+                $el=$('#listaDeLinks tbody .active')
+                alert($el.attr('id'));
             }
         });
     });
-    //eventos
-    listaDeLinks.keynavigator.setActive(primeiroLinkDaLista);
-    primeiroLinkDaLista.trigger('click');
     </script>
-    </body>
-    </html>
+</body>
+</html>
