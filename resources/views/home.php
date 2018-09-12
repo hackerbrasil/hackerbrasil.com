@@ -52,21 +52,23 @@
                 <script src="https://cdn.rawgit.com/hackerbrasil/hackerbrasil/master/public/js/keynavigator.min.js"></script>
                 <script type="text/javascript">
                 //https://github.com/nekman/keynavigator
-                var rows=$('table > tbody tr').keynavigator();
-                rows.keynavigator.setActive($('#primeiraLinha'));
+                var listaDeLinks=$('table > tbody tr').keynavigator();
+                var primeiraLinha=$('#primeiraLinha');
+                listaDeLinks.keynavigator.setActive(primeiraLinha);
+                primeiraLinha.trigger('click');
 
                 //       $(function() {
-                //   var $rows = $('table > tbody tr').keynavigator({
+                //   var $listaDeLinks = $('table > tbody tr').keynavigator({
                 //     // Don't activate on anything...
                 //     activateOn: ''
                 //   });
                 //
                 //   // Handle activation your self.
-                //   $rows.find('td').on('click', function(e) {
+                //   $listaDeLinks.find('td').on('click', function(e) {
                 //     var $input = $(this),
                 //         $selectedRow = $input.closest('tr');
                 //
-                //     $rows.keynavigator.setActive($selectedRow);
+                //     $listaDeLinks.keynavigator.setActive($selectedRow);
                 //
                 //     // Keep focus on input
                 //     $input.focus();
