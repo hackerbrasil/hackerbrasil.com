@@ -19,6 +19,7 @@
     </style>
 </head>
 <body>
+    <pre>
     <h1>Hacker Brasil</h1>
     <div class="table-responsive-sm table-borderless" id="listaDeLinks">
         <table class="table table-sm">
@@ -34,12 +35,12 @@
                 $i=1;
                 foreach($links as $link){
                     if($i++==1){
-                        print '<tr id="'.$link['id'].'" class="primeiroLinkDaLista">';
+                        print '<tr id="'.$link['uid'].'" class="primeiroLinkDaLista">';
                     }else{
-                        print '<tr id="'.$link['id'].'">';
+                        print '<tr id="'.$link['uid'].'">';
                     }
                     print '<th scope="row">'.$link['site'].'</th>';
-                    print '<td>'.$link['title'].'</td>';
+                    print '<td>'.$link['uid'].'</td>';
                     print '<td>'.$link['created_at'].'</td>';
                     print '<td class="text-right align-middle">';
                     print '<a class="badge badge-danger" href="javascript:void(0);" onclick="removerLink($(this).closest(\'tr\').attr(\'id\'));">';
@@ -67,9 +68,8 @@
         var link = $('#'+id);
         link.fadeOut(500,function(){
             link.hide(function(link){
-                listaDeLinks=$('#listaDeLinks tbody tr');
-                var index = listaDeLinks.index(link) + 1;
-                listaDeLinks.eq(index).trigger('click')
+                primeiroLinkDaLista=$('#listaDeLinks tr:first-child');
+                primeiroLinkDaLista.trigger('click');
             });
         });
     }
