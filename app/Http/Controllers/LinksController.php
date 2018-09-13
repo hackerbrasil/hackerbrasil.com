@@ -27,7 +27,7 @@ class LinksController extends Controller
     }
 
     function lerOsLinksNoBancoDeDados(){
-        $db = new Medoo();
+        // $db = new Medoo();
         return [
             [
                 'uid'=>1,
