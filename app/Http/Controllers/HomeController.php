@@ -9,8 +9,6 @@ use Medoo;
 class HomeController extends Controller
 {
     function mostrarAViewHome(){
-        $db = Medoo::connect();
-        die(var_dump($db->info()));
         $LinksController=new LinksController();
         $data=[
             'links'=>$LinksController->lerOsLinksNoBancoDeDados()
