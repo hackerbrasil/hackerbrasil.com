@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b5879bebef643cd57f8572d16795deda",
-    "content-hash": "8d322b3f4fd646b7c6894f5b8f09b910",
+    "hash": "530a2b0b0abd7a875666a8a01cdd7c24",
+    "content-hash": "d9f1ee751e990abd4048350794b3657a",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -1320,6 +1320,64 @@
                 "uuid"
             ],
             "time": "2018-07-19 23:38:55"
+        },
+        {
+            "name": "sebdesign/laravel-sri",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebdesign/laravel-sri.git",
+                "reference": "c688bcab85cd2003f09dcb4fc8dd43683d12f0e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebdesign/laravel-sri/zipball/c688bcab85cd2003f09dcb4fc8dd43683d12f0e8",
+                "reference": "c688bcab85cd2003f09dcb4fc8dd43683d12f0e8",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0",
+                "php": "^5.6.4|^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9|^1.0",
+                "orchestra/testbench": "~3.3|~3.4|~3.5|~3.6|~3.7",
+                "phpunit/phpunit": "~5.4|~6.0|~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sebdesign\\SRI\\SubresourceIntegrityServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Sebdesign\\SRI\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sébastien Nikolaou",
+                    "email": "info@sebdesign.eu",
+                    "homepage": "http://sebdesign.eu"
+                }
+            ],
+            "description": "Subresource Integrity (SRI) package for Laravel",
+            "homepage": "https://github.com/sebdesign/laravel-sri",
+            "keywords": [
+                "laravel",
+                "sri"
+            ],
+            "time": "2018-08-31 21:43:16"
         },
         {
             "name": "swiftmailer/swiftmailer",

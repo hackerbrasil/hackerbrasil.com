@@ -19,7 +19,6 @@
     </style>
 </head>
 <body>
-    <pre>
     <h1>Hacker Brasil</h1>
     <div class="table-responsive-sm table-borderless" id="listaDeLinks">
         <table class="table table-sm">
@@ -55,7 +54,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdn.rawgit.com/hackerbrasil/hackerbrasil/master/public/js/keynavigator.min.js" integrity="sha384-7/yFCCASGxu6NLsbLH2SqRBxT7A7ADzT21wRrSrXF5oXkJGi4+jHuFeQvU9svbNB" crossorigin="anonymous"></script>
+    <script src="{{ asset('/js/keynavigator.min.js') }}" integrity="{{ integrity('/js/keynavigator.min.js') }}" crossorigin="anonymous"></script>
     <script type="text/javascript">
     //variaveis
     //https://github.com/nekman/keynavigator
