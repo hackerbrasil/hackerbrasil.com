@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $schedule->command('baixar:feeds');
+            $schedule->command('feeds:update');
         })->everyFifteenMinutes();
     }
 

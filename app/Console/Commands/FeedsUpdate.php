@@ -6,21 +6,21 @@ use Illuminate\Console\Command;
 
 use FastFeed\Factory;
 
-class BaixarFeeds extends Command
+class FeedsUpdate extends Command
 {
     /**
     * The name and signature of the console command.
     *
     * @var string
     */
-    protected $signature = 'baixar:feeds';
+    protected $signature = 'feeds:update';
 
     /**
     * The console command description.
     *
     * @var string
     */
-    protected $description = 'Baixar feeds Atom ou RSS';
+    protected $description = 'Atualizar ou criar feeds Atom ou RSS';
 
     /**
     * Create a new command instance.
