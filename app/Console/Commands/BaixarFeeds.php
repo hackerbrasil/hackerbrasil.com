@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use FastFeed\Factory;
+
 class BaixarFeeds extends Command
 {
     /**
@@ -38,6 +40,12 @@ class BaixarFeeds extends Command
     public function handle()
     {
         system('clear');
-        print 'download ok'.PHP_EOL;
+        $fastFeed = Factory::create();
+        $fastFeed->addFeed('default', 'http://gizmodo.com.br/feed');
+        $items = $fastFeed->fetch('default');
+        foreach ($items as $item) {
+            echo $item->getName() . PHP_EOL;
+            echo chr(9).$item->getSource() . PHP_EOL;
+        }
     }
 }
