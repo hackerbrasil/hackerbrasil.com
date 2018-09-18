@@ -44,8 +44,22 @@ class BaixarFeeds extends Command
         $fastFeed->addFeed('default', 'http://gizmodo.com.br/feed');
         $items = $fastFeed->fetch('default');
         foreach ($items as $item) {
-            echo $item->getName() . PHP_EOL;
-            echo chr(9).$item->getSource() . PHP_EOL;
+            $title=$item->getName();
+            $url=$item->getSource();
+            $row = Lazer::table('links')->where('url', '=', $url)->find();
+            if(isset($row->id)){
+                $row->title = $title;
+                $row->updated_at=time();
+            }else{
+                $row = Lazer::table('links');
+                $row->title = $title;
+                $row->url = $url;
+                $time=time();
+                $row->created_at=$time;
+                $row->updated_at=$time;
+                $row->save();
+            }
+            print $title.PHP_EOL;
         }
     }
 }
