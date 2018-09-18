@@ -4,25 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-use Basic\Migration;
-
-use Medoo;
-
-class MigrateAll extends Command
+class BaixarFeeds extends Command
 {
     /**
     * The name and signature of the console command.
     *
     * @var string
     */
-    protected $signature = 'migrate:all';
+    protected $signature = 'baixar:feeds';
 
     /**
     * The console command description.
     *
     * @var string
     */
-    protected $description = 'Migrar todas as tabelas';
+    protected $description = 'Baixar feeds Atom ou RSS';
 
     /**
     * Create a new command instance.
@@ -41,12 +37,7 @@ class MigrateAll extends Command
     */
     public function handle()
     {
-        $db = Medoo::connect();
-        $Migration=new Migration($db);
-        $pastasDasTabelas=$_SERVER['PWD'].'/app/Http/Models/';
-        if($Migration->migrateAll($pastasDasTabelas)){
-            system('clear');
-            print 'Tabelas migradas com sucesso'.PHP_EOL;
-        }
+        system('clear');
+        print 'download ok'.PHP_EOL;
     }
 }
