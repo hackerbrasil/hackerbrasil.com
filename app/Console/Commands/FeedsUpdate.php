@@ -8,6 +8,8 @@ use FastFeed\Factory;
 
 use Medoo;
 
+use App\Http\Controllers\LinksController;
+
 class FeedsUpdate extends Command
 {
     /**
@@ -42,50 +44,35 @@ class FeedsUpdate extends Command
     public function handle()
     {
         system('clear');
-        $db = Medoo::connect();
-        $fastFeed = Factory::create();
-        $feedUrl='http://gizmodo.com.br/feed';
-        $fastFeed->addFeed('default', $feedUrl);
-        $where=['url'=>$feedUrl];
-        $feed=$db->get('feeds','*',$where);
-        if($feed){
-                $feedId=$feed['id'];
-        }else{
-            $data=[
-                'url'=>$feedUrl,
-                'created_at'=>time()
-            ];
-            $db->insert('feeds',$data);
-            $feedId=$db->id();
-        }
-        $items = $fastFeed->fetch('default');
-        foreach ($items as $item) {
-            $title=$item->getName();
-            $url=$item->getSource();
-            $where=['url'=>$url];
-            $link=$db->get('links','*',$where);
-            if($link){
-                if($link['title']<>$title){
+        $feeds=[
+            'http://gizmodo.com.br/feed'
+        ];
+        $LinksController=new LinksController();
+        foreach ($feeds as $key => $feedUrl) {
+            if($LinksController->validUrl($feedUrl)){
+                $db = Medoo::connect();
+                $fastFeed = Factory::create();
+                $feedUrl='http://gizmodo.com.br/feed';
+                $fastFeed->addFeed('default', $feedUrl);
+                $where=['url'=>$feedUrl];
+                $feed=$db->get('feeds','*',$where);
+                if($feed){
+                    $feedId=$feed['id'];
+                }else{
                     $data=[
-                        'title'=>$title,
-                        'updated_at'=>time(),
-                        'feed_id'=>$feedId
+                        'url'=>$feedUrl,
+                        'created_at'=>time()
                     ];
-                    $where=[
-                        'id'=>$link['id']
-                    ];
-                    $db->update('links',$data,$where);
+                    $db->insert('feeds',$data);
+                    $feedId=$db->id();
                 }
-            }else{
-                $data=[
-                    'title'=>$title,
-                    'url'=>$url,
-                    'created_at'=>time(),
-                    'feed_id'=>$feedId
-                ];
-                $db->insert('links',$data);
+                $items = $fastFeed->fetch('default');
+                foreach ($items as $item) {
+                    $title=$item->getName();
+                    $url=$item->getSource();
+                    $LinksController->adicionarLinkAoBancoDeDados($title,$url,$feedId);
+                }
             }
-            print $title.PHP_EOL;
         }
     }
 }
