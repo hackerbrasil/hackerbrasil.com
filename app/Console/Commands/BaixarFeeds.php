@@ -10,14 +10,14 @@ use Medoo;
 
 use App\Http\Controllers\LinksController;
 
-class FeedsUpdate extends Command
+class BaixarFeeds extends Command
 {
     /**
     * The name and signature of the console command.
     *
     * @var string
     */
-    protected $signature = 'feeds:update';
+    protected $signature = 'baixar:feeds';
 
     /**
     * The console command description.
