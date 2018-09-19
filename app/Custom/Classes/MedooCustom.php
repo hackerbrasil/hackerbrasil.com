@@ -16,7 +16,8 @@ class MedooCustom
             'database_name' => $dbName,
             'server' => $_ENV["DB_HOST"],
             'username' => $_ENV["DB_USERNAME"],
-            'password' => $_ENV["DB_PASSWORD"]
+            'password' => $_ENV["DB_PASSWORD"],
+            'charset' => 'utf8',
         ]);
     }
 }
