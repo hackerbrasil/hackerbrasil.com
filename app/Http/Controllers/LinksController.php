@@ -88,12 +88,12 @@ class LinksController extends Controller
         $where=['id[>]'=>0];
         $links=$db->select('links','*',$where);
         if(is_array($links) && count($links)>0){
-            return $this->lerOSiteDosLinks($links);
+            return $this->lerONomeDoFeedDosLinks($links);
         }else{
             return [];
         }
     }
-    function lerOSiteDosLinks($links){
+    function lerONomeDoFeedDosLinks($links){
         $feeds=[];
         $db = Medoo::connect();
         foreach ($links as $key => $link) {
