@@ -32,14 +32,16 @@
             <tbody>
                 <?php
                 $i=1;
-                foreach($links as $link){
+                foreach($links as $key=>$link){
+                    // print '<pre>';
+                    // die(var_dump($link));
                     if($i++==1){
-                        print '<tr id="'.$link['uid'].'" class="primeiroLinkDaLista">';
+                        print '<tr id="'.$link['url_hash'].'" class="primeiroLinkDaLista">';
                     }else{
-                        print '<tr id="'.$link['uid'].'">';
+                        print '<tr id="'.$link['url_hash'].'">';
                     }
-                    print '<th scope="row">'.$link['site'].'</th>';
-                    print '<td>'.$link['uid'].'</td>';
+                    print '<th scope="row">'.$link['feed_name'].'</th>';
+                    print '<td>'.$link['title'].'</td>';
                     print '<td>'.$link['created_at'].'</td>';
                     print '<td class="text-right align-middle">';
                     print '<a class="badge badge-danger" href="javascript:void(0);" onclick="removerLink($(this).closest(\'tr\').attr(\'id\'));">';

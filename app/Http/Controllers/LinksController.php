@@ -85,31 +85,29 @@ class LinksController extends Controller
 
     function lerOsLinksNoBancoDeDados(){
         $db = Medoo::connect();
-        return [
-            [
-                'uid'=>1,
-                'site'=>'Gizmodo Brasil',
-                'title'=>'Noticia 1',
-                'created_at'=>time()
-            ],
-            [
-                'uid'=>'2',
-                'site'=>'Tecmundo',
-                'title'=>'Noticia 2',
-                'created_at'=>time()
-            ],
-            [
-                'uid'=>'3',
-                'site'=>'Tecmundo',
-                'title'=>'Noticia 2',
-                'created_at'=>time()
-            ],
-            [
-                'uid'=>'4',
-                'site'=>'Tecmundo',
-                'title'=>'Noticia 2',
-                'created_at'=>time()
-            ]
-        ];
+        $where=['id[>]'=>0];
+        $links=$db->select('links','*',$where);
+        if(is_array($links) && count($links)>0){
+            return $this->lerOSiteDosLinks($links);
+        }else{
+            return [];
+        }
+    }
+    function lerOSiteDosLinks($links){
+        $feeds=[];
+        $db = Medoo::connect();
+        foreach ($links as $key => $link) {
+            $where=[
+                'id'=>$link['feed_id']
+            ];
+            if(isset($feeds[$link['feed_id']])){
+                $feed=$feeds[$link['feed_id']];
+            }else{
+                $feed=$db->get('feeds','*',$where);
+                $feeds[$link['feed_id']]=$feed;
+            }
+            $links[$key]['feed_name']=$feed['name'];
+        }
+        return $links;
     }
 }
