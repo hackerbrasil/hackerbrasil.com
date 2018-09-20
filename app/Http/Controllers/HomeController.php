@@ -22,13 +22,15 @@ class HomeController extends Controller
             $minutes=2*$umAno;
             return response()
             ->view('home',$data)
-            ->cookie('user_token', $this->criarUserToken(), $minutes);
+            ->cookie('user_token', $this->criarUserToken(10), $minutes);
         }
     }
-    function criarUserToken(){
+    function criarUserToken($limit=11,$special=false){
         $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
-        $characters.= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
-        $limit=strlen($characters);
+        if($special){
+            $characters.= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $characters.= '_-';
+        }
         $uid = '';
         for ($i = 0; $i < $limit; $i++) {
             $uid .= $characters[rand(0, mb_strlen($characters)-1)];

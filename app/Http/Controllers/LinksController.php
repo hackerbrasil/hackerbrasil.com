@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Medoo;
+
+use App\Http\Controllers\VisitasController;
 
 class LinksController extends Controller
 {
@@ -14,6 +17,10 @@ class LinksController extends Controller
             'url_hash'=>$url_hash
         ];
         $link=$db->get("links","*",$where);
+        if($link){
+            $VisitasController=new VisitasController();
+            $VisitasController->salvarVisita($link['url_hash']);
+        }
         return response()->json($link);
     }
     function adicionarLinkAoBancoDeDados($title,$url,$feedId){
