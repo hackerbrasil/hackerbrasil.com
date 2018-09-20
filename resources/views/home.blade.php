@@ -40,7 +40,7 @@
                     }else{
                         print '<tr id="'.$link['url_hash'].'">';
                     }
-                    print '<th class="link scope="row">'.$link['feed_name'].'</th>';
+                    print '<th class="link" scope="row">'.$link['feed_name'].'</th>';
                     print '<td class="link">'.$link['title'].'</td>';
                     print '<td class="link">'.$link['created_at'].'</td>';
                     print '<td class="text-right align-middle">';
