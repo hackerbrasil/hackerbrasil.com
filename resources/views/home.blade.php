@@ -40,9 +40,9 @@
                     }else{
                         print '<tr id="'.$link['url_hash'].'">';
                     }
-                    print '<th scope="row">'.$link['feed_name'].'</th>';
-                    print '<td>'.$link['title'].'</td>';
-                    print '<td>'.$link['created_at'].'</td>';
+                    print '<th class="link scope="row">'.$link['feed_name'].'</th>';
+                    print '<td class="link">'.$link['title'].'</td>';
+                    print '<td class="link">'.$link['created_at'].'</td>';
                     print '<td class="text-right align-middle">';
                     print '<a class="badge badge-danger" href="javascript:void(0);" onclick="removerLink($(this).closest(\'tr\').attr(\'id\'));">';
                     print '<i class="fas fa-times"></i>';
@@ -120,8 +120,9 @@
             }
         });
         // $('#listaDeLinks tr').on("dblclick", function(e){
-        $('#listaDeLinks tr').on("click", function(e){
-            abrirLink($(this).attr('id'));
+        $('#listaDeLinks tr > .link').
+        on("click", function(e){
+            abrirLink($(this).closest('tr').attr('id'));
             e.preventDefault();  //cancel system double-click event
         });
     });
