@@ -16,3 +16,4 @@
 // });
 
 Route::get('/', 'HomeController@mostrarAViewHome');
+Route::post('/api/abrirLink', 'LinksController@abrirLink');

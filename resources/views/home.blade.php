@@ -65,6 +65,37 @@
     var primeiroLinkDaLista=$('#listaDeLinks tr:first-child');
 
     //funções
+    function abrirLink(url_hash){
+        // Fire off the request to /form.php
+        request = $.ajax({
+            url: "/api/abrirLink",
+            type: "post",
+            data: {
+                '_token':'<?php print csrf_token(); ?>',
+                'url_hash':url_hash
+            }
+        });
+
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXHR){
+            // Log a message to the console
+            var win = window.open(response.url, '_blank');
+            if (win) {
+                //Browser has allowed it to be opened
+                win.focus();
+            } else {
+                //Browser has blocked it
+                alert('Por favor, habilite as popups para este site');
+            }
+        });
+
+        // Callback handler that will be called on failure
+        request.fail(function (jqXHR, textStatus, errorThrown){
+            // Log the error to the console
+            alert("Ocorreu um erro inesperado, tente novamente");
+        });
+    }
+
     function removerLink(id){
         var link = $('#'+id);
         link.fadeOut(500,function(){
@@ -77,6 +108,9 @@
 
     //eventos
     $(function(){
+        $.ajaxSetup({
+            xhrFields: { withCredentials: true }
+        });
         //eventos
         primeiroLinkDaLista.trigger('click');
         $(document).bind('keydown',function(e){
@@ -84,6 +118,11 @@
                 link=$('#listaDeLinks tbody .active');
                 removerLink(link.attr('id'));
             }
+        });
+        // $('#listaDeLinks tr').on("dblclick", function(e){
+        $('#listaDeLinks tr').on("click", function(e){
+            abrirLink($(this).attr('id'));
+            e.preventDefault();  //cancel system double-click event
         });
     });
     </script>

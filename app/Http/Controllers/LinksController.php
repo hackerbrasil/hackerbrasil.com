@@ -7,6 +7,15 @@ use Medoo;
 
 class LinksController extends Controller
 {
+    function abrirLink(){
+        $url_hash=@$_POST['url_hash'];
+        $db=Medoo::connect();
+        $where=[
+            'url_hash'=>$url_hash
+        ];
+        $link=$db->get("links","*",$where);
+        return response()->json($link);
+    }
     function adicionarLinkAoBancoDeDados($title,$url,$feedId){
         $title=$this->limparTudo($title);
         if($this->validUrl($url)){
