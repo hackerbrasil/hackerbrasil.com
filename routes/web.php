@@ -17,3 +17,4 @@
 
 Route::get('/', 'HomeController@mostrarAViewHome');
 Route::post('/api/abrirLink', 'LinksController@abrirLink');
+Route::post('/api/ocultarLink', 'LinksController@ocultarLink');

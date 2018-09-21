@@ -23,6 +23,19 @@ class LinksController extends Controller
         }
         return response()->json($link);
     }
+    function ocultarLink(){
+        $url_hash=@$_POST['url_hash'];
+        $db=Medoo::connect();
+        $where=[
+            'url_hash'=>$url_hash
+        ];
+        $link=$db->get("links","*",$where);
+        if($link){
+            $VisitasController=new VisitasController();
+            $VisitasController->salvarVisita($link['url_hash'],'skip');
+        }
+        return response()->json(true);
+    }
     function adicionarLinkAoBancoDeDados($title,$url,$feedId){
         $title=$this->limparTudo($title);
         if($this->validUrl($url)){
