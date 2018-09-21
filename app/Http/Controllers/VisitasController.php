@@ -13,12 +13,12 @@ class VisitasController extends Controller
         if($type<>'view'){
             $type='skip';
         }
-        $userToken=request()->cookie('user_token');
-        if(strlen($userToken)>=21){
+        $userHash=request()->cookie('user_hash');
+        if(strlen($userHash)>=21){
             $db=Medoo::connect();
             $data=[
                 'url_hash'=>$urlHash,
-                'user_token'=>$userToken,
+                'user_hash'=>$userHash,
                 'created_at'=>time(),
                 'type'=>$type
             ];

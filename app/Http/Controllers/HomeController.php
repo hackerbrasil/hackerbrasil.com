@@ -12,8 +12,8 @@ class HomeController extends Controller
         $data=[
             'links'=>$LinksController->lerOsLinksNoBancoDeDados()
         ];
-        $userToken=request()->cookie('user_token');
-        if($userToken){
+        $userHash=request()->cookie('user_hash');
+        if($userHash){
             return response()
             ->view('home',$data);
         }else{
@@ -22,10 +22,10 @@ class HomeController extends Controller
             $minutes=2*$umAno;
             return response()
             ->view('home',$data)
-            ->cookie('user_token', $this->criarUserToken(10), $minutes);
+            ->cookie('user_hash', $this->criarUserHash(10), $minutes);
         }
     }
-    function criarUserToken($limit=11,$special=false){
+    function criarUserHash($limit=11,$special=false){
         $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
         if($special){
             $characters.= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

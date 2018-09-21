@@ -114,9 +114,24 @@ class LinksController extends Controller
 
     function lerOsLinksNoBancoDeDados(){
         $db = Medoo::connect();
-        $where=['id[>]'=>0];
+        $where=[
+            'id[>]'=>0
+        ];
         $links=$db->select('links','*',$where);
         if(is_array($links) && count($links)>0){
+            $userHash=request()->cookie('user_hash');
+            foreach($links as $key=>$link){
+                $where=[
+                    'AND'=>[
+                        'user_hash'=>$userHash,
+                        'url_hash'=>$link['url_hash']
+                    ]
+                ];
+                $visita=$db->get('visitas','*',$where);
+                if($visita){
+                    unset($links[$key]);
+                }
+            }
             return $this->lerONomeDoFeedDosLinks($links);
         }else{
             return [];
