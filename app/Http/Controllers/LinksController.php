@@ -24,20 +24,6 @@ class LinksController extends Controller
         return response()->json($link);
     }
 
-    function ocultarLink(){
-        $url_hash=@$_POST['url_hash'];
-        $db=Medoo::connect();
-        $where=[
-            'url_hash'=>$url_hash
-        ];
-        $link=$db->get("links","*",$where);
-        if($link){
-            $VisitasController=new VisitasController();
-            $VisitasController->salvarVisita($link['url_hash'],'skip');
-        }
-        return response()->json(true);
-    }
-
     function adicionarLinkAoBancoDeDados($title,$url,$feedId){
         $title=$this->limparTudo($title);
         if($this->validUrl($url)){
@@ -73,50 +59,6 @@ class LinksController extends Controller
         }
     }
 
-    function limparTudo($str , $what = NULL , $with = ' '){
-        if( $what === NULL ){
-            $what   = "\\x00-\\x20";    //all white-spaces and control chars
-        }
-        return trim( preg_replace( "/[".$what."]+/" , $with , $str ) , $what );
-    }
-
-    function validUrl($url){
-        if(filter_var($url, FILTER_VALIDATE_URL)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    function lerLinksViaAjax(){
-
-    }
-
-    function lerOsLinksNoBancoDeDados(){
-        $db = Medoo::connect();
-        $where=[
-            'id[>]'=>0
-        ];
-        $links=$db->select('links','*',$where);
-        if(is_array($links) && count($links)>0){
-            $userHash=request()->cookie('user_hash');
-            foreach($links as $key=>$link){
-                $where=[
-                    'AND'=>[
-                        'user_hash'=>$userHash,
-                        'url_hash'=>$link['url_hash']
-                    ]
-                ];
-                $visita=$db->get('visitas','*',$where);
-                if($visita){
-                    unset($links[$key]);
-                }
-            }
-            return $this->lerONomeDoFeedDosLinks($links);
-        }else{
-            return [];
-        }
-    }
     function lerONomeDoFeedDosLinks($links){
         $feeds=[];
         $db = Medoo::connect();
@@ -133,5 +75,72 @@ class LinksController extends Controller
             $links[$key]['feed_name']=$feed['name'];
         }
         return $links;
+    }
+
+    function lerOsLinksNoBancoDeDados($linksPorPagina=15,$aPartirDoLink=0){
+        //$numeroDaPagina=$linksPorPagina-1 = pagina 2
+        $db = Medoo::connect();
+        $where=[
+            'id[>]'=>0
+        ];
+        $where['LIMIT']=[
+            $aPartirDoLink,
+            $linksPorPagina
+        ];
+        $links=$db->select('links','*',$where);
+        if(is_array($links) && count($links)>0){
+            $userHash=request()->cookie('user_hash');
+            foreach($links as $key=>$link){
+                $where=[
+                    'AND'=>[
+                        'user_hash'=>$userHash,
+                        'url_hash'=>$link['url_hash']
+                    ]
+                ];
+                $visita=$db->get('visitas','*',$where);
+                if($visita){
+                    unset($links[$key]);
+                }
+            }
+                return $this->lerONomeDoFeedDosLinks($links);//nome do site
+        }else{
+            return [];
+        }
+    }
+
+    function lerOsLinksViaAjax(){
+        $linksPorPagina=16;
+        $aPartirDoLink=0;
+        $links=$this->lerOsLinksNoBancoDeDados($linksPorPagina,0);
+        return response()->json($links);
+    }
+
+    function limparTudo($str , $what = NULL , $with = ' '){
+        if( $what === NULL ){
+            $what   = "\\x00-\\x20";    //all white-spaces and control chars
+        }
+        return trim( preg_replace( "/[".$what."]+/" , $with , $str ) , $what );
+    }
+
+    function ocultarLink(){
+        $url_hash=@$_POST['url_hash'];
+        $db=Medoo::connect();
+        $where=[
+            'url_hash'=>$url_hash
+        ];
+        $link=$db->get("links","*",$where);
+        if($link){
+            $VisitasController=new VisitasController();
+            $VisitasController->salvarVisita($link['url_hash'],'skip');
+        }
+        return response()->json(true);
+    }
+
+    function validUrl($url){
+        if(filter_var($url, FILTER_VALIDATE_URL)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
