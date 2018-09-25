@@ -15,6 +15,10 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@mostrarAViewHome');
-Route::post('/api/abrirLink', 'LinksController@abrirLink');
-Route::post('/api/ocultarLink', 'LinksController@ocultarLink');
+Route::get('/', 'HomeController@mostrarAViewHome');//tela home
+
+Route::post('/api/abrirLink', 'LinksController@abrirLink');//retorna o link
+
+Route::post('/api/ocultarLink', 'LinksController@ocultarLink');//retorna true
+
+Route::post('/api/lerLinks','LinksController@lerLinksViaAjax');//retorna N links
