@@ -1,5 +1,4 @@
 //variaveis
-//https://github.com/nekman/keynavigator
 var listaDeLinks=$('#listaDeLinks tbody tr');
 listaDeLinks.keynavigator();
 var primeiroLinkDaLista=$('#listaDeLinks tr:first-child');
@@ -11,7 +10,7 @@ function lerOsLinksViaAjax(){
         url: ajaxUrl,
         type: "post",
         data: {
-            '_token':'<?php print csrf_token(); ?>'
+            'page':'x'
         }
     });
     request.done(function (response, textStatus, jqXHR){
@@ -87,11 +86,15 @@ function removerLink(id){
 //eventos
 $(function(){
     $.ajaxSetup({
-        xhrFields: { withCredentials: true }
+        xhrFields: { withCredentials: true },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
     //eventos
     primeiroLinkDaLista.trigger('click');
     $(document).bind('keydown',function(e){
+        //https://github.com/nekman/keynavigator
         if(e.keyCode == 88) {
             link=$('#listaDeLinks tbody .active');
             removerLink(link.attr('id'));
