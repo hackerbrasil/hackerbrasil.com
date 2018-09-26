@@ -6,6 +6,7 @@
     <title>Hacker Brasil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" integrity="sha384-7N66VCkbpJUVwHKCEz5qEgog94BLAJpgfXvD55ThBuHpdPrffMfva/Kl1WH8Y8FS" crossorigin="anonymous"></script>
     <style media="screen">
     .active {
         background: #69f;
