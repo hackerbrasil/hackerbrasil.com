@@ -112,7 +112,12 @@ class LinksController extends Controller
         $linksPorPagina=16;
         $aPartirDoLink=0;
         $links=$this->lerOsLinksNoBancoDeDados($linksPorPagina,0);
-        return response()->json($links);
+        ///return response()->json($links);
+        $data=[
+            ['id'=>1,'text'=>'um'],
+            ['id'=>2,'text'=>'dois']
+        ];
+        return response()->json($data);
     }
 
     function limparTudo($str , $what = NULL , $with = ' '){

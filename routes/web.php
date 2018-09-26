@@ -21,4 +21,4 @@ Route::post('/api/abrirLink', 'LinksController@abrirLink');//retorna o link
 
 Route::post('/api/ocultarLink', 'LinksController@ocultarLink');//retorna true
 
-Route::post('/api/lerLinks','LinksController@lerOsLinksViaAjax');//retorna N links
+Route::post('/api/lerOsLinksViaAjax','LinksController@lerOsLinksViaAjax');//retorna N links
