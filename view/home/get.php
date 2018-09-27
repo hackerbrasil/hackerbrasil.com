@@ -2,7 +2,7 @@
 <html lang="pt" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Hacker Gaucho</title>
 </head>
 <body>
     <a href="javascript:upLinks();">Up</a>
