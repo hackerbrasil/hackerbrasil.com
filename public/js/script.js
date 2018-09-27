@@ -1,16 +1,27 @@
+//variaveis globais
+var links;
+
+//funções
+function downLinks(){
+
+}
+
 function setLinks(links){
-    var i = 0;
+    var max=links.length-1;
     var text = "";
-    for (;links[i];) {
+    for (var i = 0;links[i];i++) {
         var link=links[i];
         text +='<li id="'+link.id+'">'+link.title+'</li>';
-        i++;
     }
     $('#links').append(  text );
 }
 
+function upLinks(){
+
+}
+
 $(function(){
-    var links=[
+    links=[
         {'id':'1','title':'Um'},
         {'id':'2','title':'Dois'},
         {'id':'3','title':'Três'},
