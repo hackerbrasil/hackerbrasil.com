@@ -1,17 +1,24 @@
 //variaveis globais
+var linksEnd;
+var linksPageSize=2;
+var linksPointer;
 var links;
+var linkBegin;
 
 //funções
 function downLinks(){
 
 }
 
-function setLinks(links){
-    var max=links.length-1;
+function setLinks(links,linkBegin){
+    //links.length
+    linkBegin=linkBegin-1;
+    linksEnd=linkBegin+linksPageSize;
     var text = "";
-    for (var i = 0;links[i];i++) {
-        var link=links[i];
+    while (linkBegin<linksEnd) {
+        var link=links[linkBegin];
         text +='<li id="'+link.id+'">'+link.title+'</li>';
+        linkBegin=linkBegin+1;
     }
     $('#links').append(  text );
 }
@@ -26,7 +33,8 @@ $(function(){
         {'id':'2','title':'Dois'},
         {'id':'3','title':'Três'},
         {'id':'4','title':'Quatro'},
-        {'id':'5','title':'Cinco'}
+        {'id':'5','title':'Cinco'},
+        {'id':'6','title':'Cinco'}
     ];
-    setLinks(links);
+    setLinks(links,3);
 });
