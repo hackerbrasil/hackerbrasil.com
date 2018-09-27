@@ -5,5 +5,5 @@ require '../inc/view.php';
 
 $segment=segment();
 if(@$segment[1]=='/'){
-        view("home");
+        view("home/get");
 }
