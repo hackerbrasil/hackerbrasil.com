@@ -5,7 +5,6 @@
     <title>Hacker Gaucho</title>
 </head>
 <body>
-    atribuir um indice ao up e outro ao down representando o primero e o ultimo id da lista<br>
     <a href="javascript:upLinks();">Up</a>
     <ul id="links">
 

@@ -1,0 +1,5 @@
+determinar o tamanho da página baseado no tamanho da tela
+baixar 3 páginas (pageA,pageB e pageC)
+exibit a 2ª página
+caso dê um baixe uma página anterior a 1ª
+caso dê down baixe uma página depois da 3ª
