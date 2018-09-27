@@ -13,15 +13,23 @@ function lerOsLinksViaAjax(){
             'page':'x'
         }
     });
-    request.done(function (response, textStatus, jqXHR){
-        console.log(response);
+    request.done(function (links, textStatus, jqXHR){
 
         var i = 0;
         var text = "";
 
-        for (;response[i];) {
-            text += '<tr><td id="'+response[i].id+'">';
-            text +=response[i].text+'</td></tr>';
+        for (;links[i];) {
+            var link=links[i];
+            text += '<tr id="'+link.id+'">';
+            text +='<th>'+link.feed_name+'</th>';
+            text +='<th>'+link.title+'</th>';
+            text +='<th>'+link.created_at+'</th>';
+            text +='<td class="text-right align-middle">';
+            text +='<a class="badge badge-danger" href="javascript:void(0);" onclick="removerLink($(this).closest(\'tr\').attr(\'id\'));">';
+            text +='<i class="fas fa-times"></i>';
+            text +='</a>';
+            text +='</td>';
+            text += '</tr>';
             i++;
         }
         $('#tabelaAlvo').append(  text );
@@ -46,7 +54,6 @@ function salvarLink(url_hash,type){
         url: ajaxUrl,
         type: "post",
         data: {
-            '_token':'<?php print csrf_token(); ?>',
             'url_hash':url_hash
         }
     });
