@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="medium" time="1538569387">
+        adicionar migration
+    </note>
+    <note priority="medium" time="1538569412">
+        criar tabelas
+    </note>
+    <note priority="medium" time="1538569416">
+        criar bot
+    </note>
+    <note priority="medium" time="1538569422">
+        rodar bot
+    </note>
+    <note priority="medium" time="1538569434">
+        conectar ao banco de dados
+    </note>
+    <note priority="medium" time="1538569444">
+        exibir dados do banco de dados
+    </note>
+</todo>
