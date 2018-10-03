@@ -1,5 +1,8 @@
-<?php $linkId=@$_GET['linkId']; $pageSize=@$_GET['pageSize']; $links=[
-    ['title'=>'Zero'],
+<?php
+$linkId=@$_GET['linkId'];
+$pageSize=@$_GET['pageSize'];
+$linkId=$linkId-1;//fix da versão sem db
+$links=[
     ['title'=>'Um'],
     ['title'=>'Dois'],
     ['title'=>'Três'],
@@ -13,9 +16,18 @@
     ['title'=>'Onze'],
     ['title'=>'Doze'],
 ];
+$count=count($links);//total de links
 $links=array_slice($links,$linkId,$pageSize);
-if(count($links>0)){
-    print json($links);
-}else{
+
+//validação
+$erro=false;
+if($linkId<0 OR $linkId>$count){
+    $erro=true;
+}
+
+//output
+if($erro){
     print json(false);
+}else{
+    print json($links);
 }
