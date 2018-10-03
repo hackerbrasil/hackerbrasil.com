@@ -1,40 +1,22 @@
-//variaveis globais
-var linksEnd;
-var linksPageSize=2;
-var linksPointer;
-var links;
-var linkBegin;
+var link_id=0;
 
-//funções
-function downLinks(){
-
+function  baixarLinks(link_id,page_size){
+    var url='/ajax/links?link_id='+link_id+'&page_size=2';
+    $.get(url, function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
 }
 
-function setLinks(links,linkBegin){
-    //links.length
-    linkBegin=linkBegin-1;
-    linksEnd=linkBegin+linksPageSize;
-    var text = "";
-    while (linkBegin<linksEnd) {
-        var link=links[linkBegin];
-        text +='<li id="'+link.id+'">'+link.title+'</li>';
-        linkBegin=linkBegin+1;
-    }
-    $('#links').append(  text );
+function downPage(){
+    alert(link_id);
+    link_id=1;
 }
 
-function upLinks(){
-
+function upPage(){
+    alert(link_id);
 }
 
-$(function(){
-    links=[
-        {'id':'1','title':'Um'},
-        {'id':'2','title':'Dois'},
-        {'id':'3','title':'Três'},
-        {'id':'4','title':'Quatro'},
-        {'id':'5','title':'Cinco'},
-        {'id':'6','title':'Cinco'}
-    ];
-    setLinks(links,3);
-});
+
+function setLinkId(link_id){
+
+}
