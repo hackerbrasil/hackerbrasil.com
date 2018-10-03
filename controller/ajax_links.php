@@ -1,8 +1,8 @@
 <?php
 $linkId=@$_GET['linkId'];
 $pageSize=@$_GET['pageSize'];
-$linkId=$linkId-1;//fix da versão sem db
 $links=[
+    ['title'=>'Zero'],
     ['title'=>'Um'],
     ['title'=>'Dois'],
     ['title'=>'Três'],

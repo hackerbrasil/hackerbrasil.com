@@ -1,52 +1,77 @@
 //variaveis
-var linkId=1;
-var pageSize=2;
+var defaultLinkId=1;
+var defaultPageSize=2;
+var linkId;
+var pageSize;
+
 
 //funções diversas
-function  baixarLinks(linkId){
+function  atualizarLinks(){
     var url='/ajax_links?linkId='+linkId+'&pageSize='+pageSize;
     $.get(url, function(links, status){
-        if(links){
-            exibirLinks(links);
-        }
+        exibirLinks(links);
     });
 }
 
 function downPage(){
     linkId=linkId+pageSize;
-    baixarLinks(linkId);
+    atualizarLinks();
 }
 
 function exibirLinks(links){
-    var i=0;
-    var text='';
-    while (links[i]) {
-        text +='<li>'+links[i].title+'</li>';
-        i++;
+    if(links==false){
+        if(getLinkId()<defaultLinkId){
+            //TODO pedir via ajax o id do último link adicionado, setar o link e em seguida atualizar os links
+            setLinkId(defaultLinkId);
+        }else{
+            setLinkId(defaultLinkId);
+            atualizarLinks();
+        }
+    }else{
+        var i=0;
+        var text='';
+        while (links[i]) {
+            text +='<li>'+links[i].title+'</li>';
+            i++;
+        }
+        $('#links').html(text);
     }
-    $('#links').html(text);
 }
 
 function upPage(){
     linkId=linkId-pageSize;
-    baixarLinks(linkId);
+    atualizarLinks();
 }
 
-//get e set
+//get
 function getLinkId(){
     return linkId;
 }
 
-function setLinkId(linkId=false){
-    if(linkId){
-        linkId=linkId;
+function getPageSize(){
+    return pageSize;
+}
+
+//set
+function setLinkId(linkIdValue){
+    if(linkIdValue>0){
+        linkId=linkIdValue;
     }else{
-        linkId=getLinkId();
+        linkId=defaultIdValue;
     }
-    baixarLinks(linkId);
+}
+
+function setPageSize(pageSizeValue){
+    if(pageSizeValue>0){
+        pageSize=pageSizeValue;
+    }else{
+        pageSize=defaultPageSize;
+    }
 }
 
 //load
 $(function(){
-    setLinkId();
+    setLinkId(1);
+    setPageSize(3);
+    atualizarLinks();
 });
