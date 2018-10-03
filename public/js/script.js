@@ -1,22 +1,34 @@
 var link_id=0;
+var page_size=2;
 
-function  baixarLinks(link_id,page_size){
-    var url='/ajax/links?link_id='+link_id+'&page_size=2';
-    $.get(url, function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+function  baixarLinks(link_id){
+    var url='/ajax_links?link_id='+link_id+'&page_size='+page_size;
+    $.get(url, function(links, status){
+        exibirLinks(links);
     });
 }
 
 function downPage(){
-    alert(link_id);
-    link_id=1;
+    link_id=link_id+page_size;
+    baixarLinks(link_id);
+}
+
+function exibirLinks(links){
+    var i=0;
+    var text='';
+    while (links[i]) {
+        text +='<li>'+links[i].title+'</li>';
+        i++;
+    }
+    $('#links').html(text);
 }
 
 function upPage(){
-    alert(link_id);
+    link_id=link_id-page_size;
+    baixarLinks(link_id);
 }
 
-
-function setLinkId(link_id){
-
-}
+$(function(){
+    link_id=2;
+    baixarLinks(link_id);
+});
