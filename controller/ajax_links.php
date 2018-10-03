@@ -1,7 +1,4 @@
-<?php
-$link_id=@$_GET['link_id'];
-$page_size=@$_GET['page_size'];
-$links=[
+<?php $linkId=@$_GET['linkId']; $pageSize=@$_GET['pageSize']; $links=[
     ['title'=>'Zero'],
     ['title'=>'Um'],
     ['title'=>'Dois'],
@@ -16,6 +13,9 @@ $links=[
     ['title'=>'Onze'],
     ['title'=>'Doze'],
 ];
-header('Content-Type: application/json');
-$links=array_slice($links,$link_id,$page_size);
-print json_encode($links);
+$links=array_slice($links,$linkId,$pageSize);
+if(count($links>0)){
+    print json($links);
+}else{
+    print json(false);
+}

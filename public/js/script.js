@@ -1,16 +1,20 @@
-var link_id=0;
-var page_size=2;
+//variaveis
+var linkId=0;
+var pageSize=2;
 
-function  baixarLinks(link_id){
-    var url='/ajax_links?link_id='+link_id+'&page_size='+page_size;
+//funções diversas
+function  baixarLinks(linkId){
+    var url='/ajax_links?linkId='+linkId+'&pageSize='+pageSize;
     $.get(url, function(links, status){
-        exibirLinks(links);
+        if(links){
+            exibirLinks(links);
+        }
     });
 }
 
 function downPage(){
-    link_id=link_id+page_size;
-    baixarLinks(link_id);
+    linkId=linkId+pageSize;
+    baixarLinks(linkId);
 }
 
 function exibirLinks(links){
@@ -24,11 +28,25 @@ function exibirLinks(links){
 }
 
 function upPage(){
-    link_id=link_id-page_size;
-    baixarLinks(link_id);
+    linkId=linkId-pageSize;
+    baixarLinks(linkId);
 }
 
+//get e set
+function getLinkId(){
+    return linkId;
+}
+
+function setLinkId(linkId=false){
+    if(linkId){
+        linkId=linkId;
+    }else{
+        linkId=getLinkId();
+    }
+    baixarLinks(linkId);
+}
+
+//load
 $(function(){
-    link_id=2;
-    baixarLinks(link_id);
+    setLinkId();
 });
