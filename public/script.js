@@ -1,5 +1,5 @@
 var linksOffset=1;
-var linksPerPage=3;
+var linksPerPage=4;
 var links;
 var linksOffsetMax;
 var linksOffsetMin;
@@ -8,14 +8,13 @@ function linksGetCookie(){
     return Cookies.get('linksOffset');
 }
 
-function linksLoad(){
-    var linksOffsetCookieValue=linksGetCookie();
+function linksLoad(linksOffsetCookieValue=false){
     if(linksOffsetCookieValue){
         linksOffset=linksOffsetCookieValue;
     }
     console.log('linksOffset = '+linksOffset);
     var url='/ajax_links?linksOffset='+linksOffset+'&linksPerPage='+linksPerPage;
-    console.log('Baixando url = '+url);
+    console.log('url = '+url);
     $.get(url, function(links, status){
         linksShow(links);
     });
@@ -43,6 +42,14 @@ function linksPrevious(){
     }
 }
 
+function linksSetCookie(){
+    //https://github.com/js-cookie/js-cookie
+    var doisAnos=365*2;
+    //Cookies.remove('linksOffset');
+    Cookies.set('linksOffset',linksOffset,{ expires: doisAnos });
+    console.log('cookie linksOffset = '+linksOffset);
+}
+
 function linksShow(links){
     console.log(links);
     linksOffsetMax=links['linksOffsetMax'];
@@ -57,6 +64,7 @@ function linksShow(links){
             i++;
         }
         $('#links').html(text);
+        linksSetCookie();
     }else{
         linksOffset=1;
         linksLoad();
@@ -64,5 +72,5 @@ function linksShow(links){
 }
 
 $(function(){
-    linksLoad();
+    linksLoad(linksGetCookie());
 });
