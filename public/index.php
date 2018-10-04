@@ -13,7 +13,7 @@ $controller=$segment[1];
 
 switch($controller){
     case '/':
-        view("home/get");
+        view("home");
         break;
     case 'ajax_links':
         controller("ajax_links");

@@ -1,7 +1,7 @@
 <?php
-$linkId=@$_GET['linkId'];
-$pageSize=@$_GET['pageSize'];
-$links=[
+$linksOffset=@$_GET['linksOffset'];
+$linksPerPage=@$_GET['linksPerPage'];
+$links['links']=[
     ['title'=>'Zero'],
     ['title'=>'Um'],
     ['title'=>'Dois'],
@@ -16,12 +16,21 @@ $links=[
     ['title'=>'Onze'],
     ['title'=>'Doze'],
 ];
-$count=count($links);//total de links
-$links=array_slice($links,$linkId,$pageSize);
+$links['linksOffsetMin']=1;
+$links['linksOffsetMax']=count($links['links']);
+if($linksOffset<$links['linksOffsetMin']){
+    //valor muito baixo
+    $linksOffset=$links['linksOffsetMax']-$linksPerPage;
+}
+if($linksOffset>$links['linksOffsetMax']){
+    //valor muito alto
+    $linksOffset=$links['linksOffsetMin'];
+}
+$links['links']=array_slice($links['links'],$linksOffset,$linksPerPage);
 
 //validação
 $erro=false;
-if($linkId<0 OR $linkId>$count){
+if($linksOffset<1 OR $linksOffset>$links['linksOffsetMax']){
     $erro=true;
 }
 
