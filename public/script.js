@@ -43,9 +43,7 @@ function linksPrevious(){
 }
 
 function linksSetCookie(){
-    //https://github.com/js-cookie/js-cookie
     var doisAnos=365*2;
-    //Cookies.remove('linksOffset');
     Cookies.set('linksOffset',linksOffset,{ expires: doisAnos });
     console.log('cookie linksOffset = '+linksOffset);
 }

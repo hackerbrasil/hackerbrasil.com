@@ -3,13 +3,13 @@
     <note priority="high" time="1538569603" done="1538570617">
         adicionar método getLinkId e getLinkId
     </note>
-    <note priority="high" time="1538569623">
+    <note priority="high" time="1538569623" done="1538658111">
         adicionar cookie para salvar o linkId
     </note>
-    <note priority="medium" time="1538569387">
+    <note priority="medium" time="1538569387" done="1538682746">
         adicionar migration
     </note>
-    <note priority="medium" time="1538569412">
+    <note priority="medium" time="1538569412" done="1538682755">
         criar tabelas
     </note>
     <note priority="medium" time="1538569416">
@@ -23,5 +23,8 @@
     </note>
     <note priority="medium" time="1538569444">
         exibir dados do banco de dados
+    </note>
+    <note priority="medium" time="1538680800">
+        adicionar backup do banco de dados
     </note>
 </todo>
