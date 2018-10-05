@@ -1,6 +1,6 @@
 <?php
 require 'config.php';
-$Migration=new Basic\Migration($db);
+$Migration=new Basic\Migration(db());
 
 if($Migration->migrateAll()){
   print 'migrate ok';
