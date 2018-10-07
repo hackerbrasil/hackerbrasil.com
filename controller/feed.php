@@ -6,7 +6,6 @@
 use FastFeed\Factory;
 
 function feedBaixar($feedId,$feedUrl){
-    print $feedUrl.PHP_EOL;
     if(validUrl($feedUrl)){
         $fastFeed = Factory::create();
         $fastFeed->addFeed('default', $feedUrl);
@@ -27,6 +26,7 @@ function feedBaixar($feedId,$feedUrl){
         foreach ($items as $item) {
             $linkTitle=$item->getName();
             $linkUrl=$item->getSource();
+            $linkUrl=getHeaderLocation($linkUrl);
             if(validUrl($linkUrl)){
                 linkCreate($linkTitle,$linkUrl,$feedId);
             }
