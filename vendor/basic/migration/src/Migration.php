@@ -32,6 +32,7 @@ class Migration
         if(!$filename){
             $filename=ROOT.'app/model/';
         }
+        //verifica se a pasta das tabelas existe
         if (file_exists($filename)) {
             $dir=$filename;
         } else {
@@ -39,6 +40,7 @@ class Migration
         }
         $tablesRAW=$this->myScanDir($dir);
         $tables=null;
+        //processa as tabelas
         foreach ($tablesRAW as $key => $value) {
             if ($this->validColumn($value)) {
                 $content=file_get_contents($dir.$value);
@@ -53,15 +55,20 @@ class Migration
                 $tables[$value]=$content;
             }
         }
-        if (is_array($this->tables())) {
+        $tabelasNoBanco=$this->tables();
+        if ($tabelasNoBanco) {
             //exclusão de tabelas
-            foreach ($this->tables() as $key => $tableName) {
+            foreach ($tabelasNoBanco as $key => $tableName) {
+                //apaga as tabelas órfãs
                 if (!isset($tables[$tableName])) {
                     $this->deleteTable($tableName);
                 }
+                unset($tabelasNoBanco[$key]);
             }
+        }
+        if(count($tabelasNoBanco)>0){
             //exclusão de colunas
-            foreach ($this->tables() as $keyTableInDB => $tableName) {
+            foreach ($tabelasNoBanco as $keyTableInDB => $tableName) {
                 //le as colunas que já existe na tabelas
                 $columnsInDB=$this->columns($tableName);
                 //apaga as colunas que estão sobrando

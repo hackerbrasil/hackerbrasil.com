@@ -1,0 +1,30 @@
+#!/bin/bash
+clear
+
+migrar_tabelas() {
+    clear
+    echo "migrando as tabelas..."
+    php migrate.php
+    echo "pronto"
+}
+
+atualizar_os_links() {
+    clear
+    echo "atualizando os links..."
+    php cron.php
+    echo "pronto"
+}
+
+
+echo "Digite a opção:"
+echo "1) migrar tabelas"
+echo "2) atualizad os links"
+printf "Opção número "
+read opt
+
+case $opt
+in
+    1) migrar_tabelas ;;
+    2) atualizar_os_links ;;
+    *) echo "opção inválida" ;;
+esac

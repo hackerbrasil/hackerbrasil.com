@@ -4,20 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9aa8cddc8815fb57dea4c5e50308709",
+    "hash": "45a99f6c3e4f1345da2985b9dd609168",
+    "content-hash": "c65c867d55ef20e1162860eff1d6f454",
     "packages": [
         {
             "name": "basic/migration",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/aicoutos/migration.git",
-                "reference": "2b44f56b5b1ceaede48b281c4b10091cec532fbc"
+                "url": "https://github.com/hackergaucho/migration.git",
+                "reference": "db4c14d904137466ba8bca54dd84cc03ed26ca9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aicoutos/migration/zipball/2b44f56b5b1ceaede48b281c4b10091cec532fbc",
-                "reference": "2b44f56b5b1ceaede48b281c4b10091cec532fbc",
+                "url": "https://api.github.com/repos/hackergaucho/migration/zipball/db4c14d904137466ba8bca54dd84cc03ed26ca9f",
+                "reference": "db4c14d904137466ba8bca54dd84cc03ed26ca9f",
                 "shasum": ""
             },
             "require": {
@@ -34,7 +35,7 @@
                 "MIT"
             ],
             "description": "Sistema básico de migration",
-            "time": "2018-04-02T20:25:00+00:00"
+            "time": "2018-09-18 19:17:05"
         },
         {
             "name": "catfan/medoo",
@@ -93,7 +94,7 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2017-06-24T14:43:07+00:00"
+            "time": "2017-06-24 14:43:07"
         },
         {
             "name": "desarrolla2/cache",
@@ -148,7 +149,7 @@
                 "mysql",
                 "redis"
             ],
-            "time": "2017-01-18T12:58:33+00:00"
+            "time": "2017-01-18 12:58:33"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -192,7 +193,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2013-11-30T08:25:19+00:00"
+            "time": "2013-11-30 08:25:19"
         },
         {
             "name": "fastfeed/fastfeed",
@@ -242,7 +243,7 @@
                 "rss",
                 "rss20"
             ],
-            "time": "2015-03-02T09:34:10+00:00"
+            "time": "2015-03-02 09:34:10"
         },
         {
             "name": "fastfeed/url",
@@ -278,7 +279,7 @@
                 }
             ],
             "description": "Simple Library to manage Urls",
-            "time": "2014-02-25T15:36:50+00:00"
+            "time": "2014-02-25 15:36:50"
         },
         {
             "name": "guzzle/guzzle",
@@ -374,7 +375,7 @@
                 "web service"
             ],
             "abandoned": "guzzlehttp/guzzle",
-            "time": "2015-03-18T18:23:50+00:00"
+            "time": "2015-03-18 18:23:50"
         },
         {
             "name": "ifsnop/mysqldump-php",
@@ -426,7 +427,7 @@
                 "pdo",
                 "sqlite"
             ],
-            "time": "2018-06-30T19:40:05+00:00"
+            "time": "2018-06-30 19:40:05"
         },
         {
             "name": "psr/log",
@@ -473,7 +474,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -533,7 +534,57 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T09:03:18+00:00"
+            "time": "2018-07-26 09:03:18"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dotenv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "http://www.vancelucas.com"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2018-07-29 20:33:41"
         }
     ],
     "packages-dev": [],

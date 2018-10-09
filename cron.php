@@ -1,5 +1,4 @@
 <?php
-//system('clear');
-require_once 'config.php';
+require_once 'inc/autoload.php';
 controller('feed');
 feedLoad();
