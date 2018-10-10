@@ -6,6 +6,7 @@ function linkCreate($linkTitle,$linkUrl,$feedId){
         if($link['title']<>$linkTitle){
             linkUpdate($link,$linkTitle,$feedId);
         }
+        print 'skip '.$linkTitle.PHP_EOL;
     }else{
         $data=[
             'title'=>$linkTitle,
@@ -15,6 +16,7 @@ function linkCreate($linkTitle,$linkUrl,$feedId){
             'url_hash'=>md5($linkUrl)
         ];
         db()->insert("links",$data);
+        print 'add '.$linkTitle.PHP_EOL;
     }
 }
 

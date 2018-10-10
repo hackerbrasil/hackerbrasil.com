@@ -27,7 +27,6 @@ function feedBaixar($feedId,$feedUrl){
             $linkTitle=$item->getName();
             $linkUrl=$item->getSource();
             $linkUrl=getHeaderLocation($linkUrl);
-            print $linkUrl.PHP_EOL;
             if(validUrl($linkUrl)){
                 linkCreate($linkTitle,$linkUrl,$feedId);
             }
@@ -56,6 +55,7 @@ function feedLoad(){
     $feeds=[
         'Canaltech'=>'http://feeds2.feedburner.com/canaltechbr',
         'Gizmodo Brasil'=>'http://gizmodo.com.br/feed',
+        'Mundo dos Hackers'=>'http://www.mundodoshackers.com.br/feed',
         'Olhar Digital'=>'http://feeds2.feedburner.com/canaltechbr'
     ];
     foreach($feeds as $feedName=>$feedUrl){

@@ -6,9 +6,9 @@ var linksOffsetMin;
 var linkUpdateInterval;
 
 function linksLoad(){
-    console.log('linksOffset = '+linksOffset);
+    //console.log('linksOffset = '+linksOffset);
     var url='/ajax_links?linksOffset='+linksOffset+'&linksPerPage='+linksPerPage;
-    console.log('url = '+url);
+    //console.log('url = '+url);
     $.getJSON(url, function(result, status){
         links=result;
         linksShow();
@@ -38,26 +38,26 @@ function linksPrevious(){
 }
 
 function linksShow(){
-    console.log(links);
+    //console.log(links);
     linksOffsetMax=links['linksOffsetMax'];
     $('#numeroDeLinks').html(linksOffsetMax);
-    console.log('linksOffsetMax = '+linksOffsetMax);
+    //console.log('linksOffsetMax = '+linksOffsetMax);
     linksOffsetMin=links['linksOffsetMin'];
-    console.log('linksOffsetMin = '+linksOffsetMin);
+    //console.log('linksOffsetMin = '+linksOffsetMin);
     if(links['links'].length!=0){
         var i=0;
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
             var linkText='<a target="_blank" href="'+link.href+'">'+link.title+'</a>';
-            linkText+='<span class="tempoAtras" x-data="'+link.created_at+'"></span>';
+            linkText+='<span x-date="'+link.created_at+'"></span>';
             text +='<li>'+linkText+'</li>';
             i++;
         }
         $('#links').html(text);
         moment.locale('pt-br');
         clearInterval(linkUpdateInterval);
-        linkUpdateInterval=setInterval(linksUpdate, 1);
+        linkUpdateInterval=setInterval(linksUpdate, 100);
     }else{
         linksOffset=1;
         linksLoad();
@@ -66,11 +66,34 @@ function linksShow(){
 
 function linksUpdate(){
     $('#links > li > span').each(function (index, value) {
-        var xData=$(this).attr('x-data');
-        var mom=moment.unix(xData);
-        var dataText=mom.startOf("seconds").fromNow();
+        var xDate=$(this).attr('x-date');
+        // var mom=moment.unix(xData);
+        // var dataText=mom.startOf("seconds").fromNow();
+        var dataText=timeSince(xDate);
         $(this).html(' <small>'+dataText+'</small>');
     });
+}
+
+function timeSince(date) {
+
+    var seconds = Math.floor(((new Date().getTime()/1000) - date)),
+    interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) return interval + "y";
+
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) return interval + "m";
+
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) return interval + "d";
+
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) return interval + "h";
+
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) return interval + "m";
+
+    return Math.floor(seconds) + "s";
 }
 
 $(function(){

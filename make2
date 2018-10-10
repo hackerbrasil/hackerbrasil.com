@@ -18,7 +18,7 @@ atualizar_os_links() {
 
 echo "Digite a opção:"
 echo "1) migrar tabelas"
-echo "2) atualizad os links"
+echo "2) atualizar os links"
 printf "Opção número "
 read opt
 
