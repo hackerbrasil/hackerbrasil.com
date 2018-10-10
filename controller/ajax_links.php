@@ -1,21 +1,6 @@
 <?php
 $linksOffset=@$_GET['linksOffset'];
 $linksPerPage=@$_GET['linksPerPage'];
-$links['links']=[
-    ['title'=>'Zero'],
-    ['title'=>'Um'],
-    ['title'=>'Dois'],
-    ['title'=>'Três'],
-    ['title'=>'Quatro'],
-    ['title'=>'Cinco'],
-    ['title'=>'Seis'],
-    ['title'=>'Sete'],
-    ['title'=>'Oito'],
-    ['title'=>'Nove'],
-    ['title'=>'Dez'],
-    ['title'=>'Onze'],
-    ['title'=>'Doze'],
-];
 $db=db();
 $where=[
     'HAVING'=>[
@@ -26,7 +11,7 @@ $where=[
         'id'=>'DESC'
     ]
 ];
-$links['links']=$db->select('links',['title','url'],$where);
+$links['links']=$db->select('links',['title','url','created_at'],$where);
 $links['linksOffsetMin']=1;
 
 //contar numero de links

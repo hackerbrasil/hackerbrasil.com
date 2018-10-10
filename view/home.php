@@ -3,47 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Hacker Gaucho</title>
-    <style>
-    *{
-        border:0;
-        padding:0;
-    }
-    .block, label{
-        display:block;
-        width:100%;
-    }
-    .input-text,button{
-        background-color:#f6f6f6;
-        border:1px solid gray;
-        padding:1em;
-    }
-    .input-text.block,button{
-        width:calc(100% - 2em - 2px);
-    }
-    button.block,label{
-        cursor:pointer;
-    }
-    ol,ul{
-        margin-left:2em;
-    }
-    table{
-        border-collapse: collapse;
-        margin:0 auto;
-        width:100%;
-    }
-    td{
-        vertical-align: top;
-    }
-    @media all and (max-width: 799px) {
-        h1{
-            text-align:center;
-        }
-        td {
-            display:inline-block;
-            width: 100%;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <table width="100%">
@@ -73,15 +33,18 @@
     <table width="100%">
         <tr>
             <td width="50%">
-                <button class="block" type="button" onclick="javascript:linksPrevious();">Página anterior</button>
+                <button class="block" type="button" onclick="javascript:linksPrevious();">
+                    Ver links anteriores
+                </button>
             </td>
             <td width="50%">
-                <button class="block" type="button" onclick="javascript:linksNext();">Próxima página</button>
+                <button class="block" type="button" onclick="javascript:linksNext();">
+                    Ver links mais recentes
+                </button>
             </td>
         </tr>
     </table>
     <script src="/jquery-1.2.min.js"></script>
-    <script src="/js.cookie.min.js"></script>
     <script src="/script.js?time=<?php print time();?>"></script>
 </body>
 </html>
