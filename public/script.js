@@ -49,26 +49,28 @@ function linksShow(){
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
-            var linkText='<span class="tempoAtras" x-data="'+link.created_at+'"></span>';
-            linkText+='<a target="_blank" href="'+link.href+'">'+link.title+'</a>';
+            var linkText='<a target="_blank" href="'+link.href+'">'+link.title+'</a>';
+            linkText+='<span class="tempoAtras" x-data="'+link.created_at+'"></span>';
             text +='<li>'+linkText+'</li>';
             i++;
         }
         $('#links').html(text);
         moment.locale('pt-br');
         clearInterval(linkUpdateInterval);
-        linkUpdateInterval=setInterval(function(){
-            $('#links > li > span').each(function (index, value) {
-                var xData=$(this).attr('x-data');
-                var mom=moment.unix(xData);
-                var dataText=mom.fromNow();
-                $(this).html(dataText+' ~ ');
-            })
-        }, 1000);
+        linkUpdateInterval=setInterval(linksUpdate, 1);
     }else{
         linksOffset=1;
         linksLoad();
     }
+}
+
+function linksUpdate(){
+    $('#links > li > span').each(function (index, value) {
+        var xData=$(this).attr('x-data');
+        var mom=moment.unix(xData);
+        var dataText=mom.startOf("seconds").fromNow();
+        $(this).html(' <small>'+dataText+'</small>');
+    });
 }
 
 $(function(){
