@@ -45,6 +45,8 @@
         </tr>
     </table>
     <script src="/jquery-1.2.min.js"></script>
+    <script src="/moment.min.js"></script>
+    <script src="/moment-with-locales.min.js"></script>
     <script src="/script.js?time=<?php print time();?>"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ var linksPerPage=20;
 var links;
 var linksOffsetMax;
 var linksOffsetMin;
+var linkUpdateInterval;
 
 function linksLoad(){
     console.log('linksOffset = '+linksOffset);
@@ -48,12 +49,22 @@ function linksShow(){
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
-            var linkText='<span class="tempoAtras" id="'+link.created_at+'"></span>';
+            var linkText='<span class="tempoAtras" x-data="'+link.created_at+'"></span>';
             linkText+='<a target="_blank" href="'+link.href+'">'+link.title+'</a>';
             text +='<li>'+linkText+'</li>';
             i++;
         }
         $('#links').html(text);
+        moment.locale('pt-br');
+        clearInterval(linkUpdateInterval);
+        linkUpdateInterval=setInterval(function(){
+            $('#links > li > span').each(function (index, value) {
+                var xData=$(this).attr('x-data');
+                var mom=moment.unix(xData);
+                var dataText=mom.fromNow();
+                $(this).html(dataText+' ~ ');
+            })
+        }, 1000);
     }else{
         linksOffset=1;
         linksLoad();
