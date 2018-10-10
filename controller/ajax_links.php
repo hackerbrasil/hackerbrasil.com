@@ -16,8 +16,26 @@ $links['links']=[
     ['title'=>'Onze'],
     ['title'=>'Doze'],
 ];
+$db=db();
+$where=[
+    'HAVING'=>[
+        'id[>=]'=>18
+    ],
+    'LIMIT'=>$linksPerPage+1,
+    'ORDER'=>[
+        'id'=>'DESC'
+    ]
+];
+$links['links']=$db->select('links',['title','url'],$where);
 $links['linksOffsetMin']=1;
-$links['linksOffsetMax']=count($links['links']);
+
+//contar numero de links
+$where=[
+    'id[>]'=>0
+];
+$links['linksOffsetMax']=$db->count('links',$where);
+
+
 if($linksOffset<$links['linksOffsetMin']){
     //valor muito baixo
     $linksOffset=$links['linksOffsetMax']-$linksPerPage;
