@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Hacker Gaucho</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?t=<?php print time();?>">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
                     <input type="text" name="s" class="block input-text" id="s">
                 </form>
             </td>
-        </tr>
+        </tr>    <script src='nprogress.js'></script>
         <tr>
             <td width="50%">
                 <button class="block" type="button" onclick="javascript:linksPrevious();">Enviar feed</button>
@@ -49,8 +49,6 @@
 
     <script src="/jquery-1.11.1.min.js"></script>
     <script src="/jquery.loading.js"></script>
-    <script src="/moment.min.js"></script>
-    <script src="/moment-with-locales.min.js"></script>
     <script src="/script.js?time=<?php print time();?>"></script>
 </body>
 </html>
