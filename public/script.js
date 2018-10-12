@@ -5,10 +5,18 @@ var linksOffsetMax;
 var linksOffsetMin;
 var linkUpdateInterval;
 
+function irParaOTopo() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
 function linksLoad(){
     //console.log('linksOffset = '+linksOffset);
     var url='/ajax_links?linksOffset='+linksOffset+'&linksPerPage='+linksPerPage;
     //console.log('url = '+url);
+    $("body").loading({
+        message: 'Atualizando...'
+    });
     $.getJSON(url, function(result, status){
         links=result;
         linksShow();
@@ -58,6 +66,7 @@ function linksShow(){
         moment.locale('pt-br');
         clearInterval(linkUpdateInterval);
         linkUpdateInterval=setInterval(linksUpdate, 100);
+        $("body").loading('stop');
     }else{
         linksOffset=1;
         linksLoad();
@@ -74,25 +83,26 @@ function linksUpdate(){
     });
 }
 
-function timeSince(date) {
+function mostrarBtnIrParaOTopo() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("btnIrParaOTopo").style.display = "block";
+    } else {
+        document.getElementById("btnIrParaOTopo").style.display = "none";
+    }
+}
 
+function timeSince(date) {
     var seconds = Math.floor(((new Date().getTime()/1000) - date)),
     interval = Math.floor(seconds / 31536000);
-
     if (interval > 1) return interval + "y";
-
     interval = Math.floor(seconds / 2592000);
     if (interval > 1) return interval + "m";
-
     interval = Math.floor(seconds / 86400);
     if (interval >= 1) return interval + "d";
-
     interval = Math.floor(seconds / 3600);
     if (interval >= 1) return interval + "h";
-
     interval = Math.floor(seconds / 60);
     if (interval >= 1) return interval + "m";
-
     return Math.floor(seconds) + "s";
 }
 
@@ -102,4 +112,9 @@ $(function(){
 
     //foco
     $('#s').focus();
+
+    // topo
+    window.onscroll = function() {mostrarBtnIrParaOTopo()};
+
+
 });

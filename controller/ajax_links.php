@@ -1,4 +1,5 @@
 <?php
+sleep(2);
 $linksOffset=@$_GET['linksOffset'];
 $linksPerPage=@$_GET['linksPerPage'];
 $db=db();

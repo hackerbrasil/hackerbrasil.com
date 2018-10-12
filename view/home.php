@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+    <button onclick="irParaOTopo()" id="btnIrParaOTopo" title="Go to top">Topo</button>
     <table width="100%">
         <tr>
             <td>
@@ -44,7 +46,9 @@
             </td>
         </tr>
     </table>
-    <script src="/jquery-1.2.min.js"></script>
+
+    <script src="/jquery-1.11.1.min.js"></script>
+    <script src="/jquery.loading.js"></script>
     <script src="/moment.min.js"></script>
     <script src="/moment-with-locales.min.js"></script>
     <script src="/script.js?time=<?php print time();?>"></script>
