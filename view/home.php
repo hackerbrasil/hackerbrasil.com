@@ -19,7 +19,7 @@
                     <input type="text" name="s" class="block input-text" id="s">
                 </form>
             </td>
-        </tr>    <script src='nprogress.js'></script>
+        </tr> 
         <tr>
             <td width="50%">
                 <button class="block" type="button" onclick="javascript:linksPrevious();">Enviar feed</button>
@@ -46,9 +46,7 @@
             </td>
         </tr>
     </table>
-
     <script src="/jquery-1.11.1.min.js"></script>
-    <script src="/jquery.loading.js"></script>
-    <script src="/script.js?time=<?php print time();?>"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
