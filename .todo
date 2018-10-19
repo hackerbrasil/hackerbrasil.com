@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <note priority="high" time="1539956840">
+    <note priority="high" time="1539956840" done="1539977366">
         baixar os 5 ultimos links em ordem desc via ajax
     </note>
-    <note priority="medium" time="1539956347">
+    <note priority="medium" time="1539956347" done="1539977374">
         adicionar uma div que serve como trigger para a paginação infinita
+    </note>
+    <note priority="medium" time="1539977414">
+        retornar no ajax o id do inicio da próxima página (nextId)
     </note>
 </todo>
