@@ -1,11 +1,19 @@
-function require(nomeDaFuncao,callback){
-    $.getScript('js/'+nomeDaFuncao+'.js', function() {
-        callback();
+var nextId=false;
+
+function carregarLinks(nextId){
+    var url='/carregarLinks?nextId='+nextId;
+    msg('Carregando links...');
+    $.getJSON(url, function(result, status){
+        msg(result.msg);
     });
 }
 
-$(function(){
-    require('carregarLinks', function() {
-        carregarLinks('olá mundo');
-    });
-});
+function msg(msg){
+    $('#carregando').html(msg);
+}
+
+function log(mixed){
+    console.log(mixed);
+}
+
+carregarLinks(nextId);
