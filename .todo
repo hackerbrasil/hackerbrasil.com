@@ -15,4 +15,7 @@
     <note priority="medium" time="1540322704">
         corrigir o bug do loop da paginação infinita
     </note>
+    <note priority="medium" time="1540499192">
+        adicionar a última versão do bootstrap
+    </note>
 </todo>
