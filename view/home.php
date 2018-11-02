@@ -2,16 +2,22 @@
 <html lang="pt" dir="ltr">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacker Gaucho</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" integrity="sha256-GGxA0G/BODBJenufQrwUU4wbf6C5hWDHkR5uGpNfdp0=" crossorigin="anonymous" />
 </head>
 <body>
-    <h1>Hacker Brasil</h1>
-    <p id="carregando"></p>
-    <ul class="nav flex-column" id="links">
-    </ul>
-    <div id="pacman">
-        <img src="/pacman.gif" alt="Pacman">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>Hacker Brasil<br><small id="carregando"></small></h1>
+                <ul class="nav nav-tabs nav-stacked" id="links">
+                </ul>
+                <div id="pacman">
+                    <img src="/pacman.gif" alt="Pacman">
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/jquery.appear.js"></script>

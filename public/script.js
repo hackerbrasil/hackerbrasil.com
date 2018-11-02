@@ -32,11 +32,11 @@ function linksShow(links){
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
-            var linkText='<a class="nav-link" target="_blank" href="'+link.url+'">';
+            var linkText='<a target="_blank" href="'+link.url+'">';
             linkText+=link.title;
             linkText+='</a>';
             linkText+='<span x-date="'+link.created_at+'"></span>';
-            text +='<li class="nav-item">'+linkText+'</li>';
+            text +='<li>'+linkText+'</li>';
             i++;
         }
         $('#links').append(text);
