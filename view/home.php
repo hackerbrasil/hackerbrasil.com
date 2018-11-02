@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacker Gaucho</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" integrity="sha256-GGxA0G/BODBJenufQrwUU4wbf6C5hWDHkR5uGpNfdp0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="container">

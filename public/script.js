@@ -1,5 +1,6 @@
 var i=0;
 var nextId=false;
+var linkUpdateInterval;
 
 function carregarLinks(nextId){
     var url='/carregarLinks?nextId='+nextId;
@@ -11,9 +12,6 @@ function carregarLinks(nextId){
 
 function gatilhoDoFim(){
     $('#pacman').appear(function() {
-        log("pacman "+i);
-        // i=i+1;
-        // $('ul').append('<li>'+i+'</li>');
         carregarLinks(nextId);
     });
 }
@@ -35,17 +33,43 @@ function linksShow(links){
             var linkText='<a target="_blank" href="'+link.url+'">';
             linkText+=link.title;
             linkText+='</a>';
-            linkText+='<span x-date="'+link.created_at+'"></span>';
+            linkText='<span class="pull-right data-right" x-date="'+link.created_at+'"></span>'+linkText;
             text +='<li>'+linkText+'</li>';
             i++;
         }
         $('#links').append(text);
+        linkUpdateInterval=setInterval(linksUpdate, 100);
         nextId=links.nextId;
         msg(links.msg);
         gatilhoDoFim();
     }else{
         log('erro ao exibir links');
     }
+}
+
+function linksUpdate(){
+    $('#links > li > span').each(function (index, value) {
+        var xDate=$(this).attr('x-date');
+        // var mom=moment.unix(xData);
+        // var dataText=mom.startOf("seconds").fromNow();
+        var dataText=timeSince(xDate);
+        $(this).html(' <small class="badge badge-inverse">'+dataText+'</small>');
+    });
+}
+
+function timeSince(date) {
+    var seconds = Math.floor(((new Date().getTime()/1000) - date)),
+    interval = Math.floor(seconds / 31536000);
+    if (interval > 1) return interval + " y";
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) return interval + " m";
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) return interval + " d";
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) return interval + " h";
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) return interval + " m";
+    return Math.floor(seconds) + " s";
 }
 
 $(function() {
