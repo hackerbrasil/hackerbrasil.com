@@ -5,7 +5,7 @@
 $db=db();
 
 //2) seta o numero de links por página
-$linksPorPagina=5;
+$linksPorPagina=10;
 
 //3) recebe o nextId
 $nextId=@$_GET['nextId'];

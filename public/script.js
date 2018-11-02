@@ -12,8 +12,8 @@ function carregarLinks(nextId){
 function gatilhoDoFim(){
     $('#pacman').appear(function() {
         log("pacman "+i);
-        i=i+1;
-        $('ul').append('<li>'+i+'</li>');
+        // i=i+1;
+        // $('ul').append('<li>'+i+'</li>');
         carregarLinks(nextId);
     });
 }
@@ -32,9 +32,11 @@ function linksShow(links){
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
-            var linkText='<a target="_blank" href="'+link.url+'">'+link.title+'</a>';
+            var linkText='<a class="nav-link" target="_blank" href="'+link.url+'">';
+            linkText+=link.title;
+            linkText+='</a>';
             linkText+='<span x-date="'+link.created_at+'"></span>';
-            text +='<li>'+linkText+'</li>';
+            text +='<li class="nav-item">'+linkText+'</li>';
             i++;
         }
         $('#links').append(text);
