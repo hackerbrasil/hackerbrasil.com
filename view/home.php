@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacker Gaucho</title>
-    <link rel="stylesheet" href="/bootstrap-2.3.2.min.css" integrity="sha256-GGxA0G/BODBJenufQrwUU4wbf6C5hWDHkR5uGpNfdp0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="/bootstrap-responsive-2.3.2.min.css" integrity="sha256-lIFJvX0EbEpgbhha1orNrXaV1TKngfVWrIbwgcHl80E=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/bootstrap-2.3.2.min.css" integrity="sha256-GGxA0G/BODBJenufQrwUU4wbf6C5hWDHkR5uGpNfdp0=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/style.css">
+
 </head>
 <body>
     <div class="container">
