@@ -53,7 +53,7 @@ function linksUpdate(){
         // var mom=moment.unix(xData);
         // var dataText=mom.startOf("seconds").fromNow();
         var dataText=timeSince(xDate);
-        $(this).html(' <small class="badge badge-inverse">'+dataText+'</small>');
+        $(this).html(' <small class="badge">'+dataText+'</small>');
     });
 }
 
