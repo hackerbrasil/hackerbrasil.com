@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" integrity="sha256-GGxA0G/BODBJenufQrwUU4wbf6C5hWDHkR5uGpNfdp0=" crossorigin="anonymous" />
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row-fluid">
+    <div class="container">
+        <div class="row">
             <div class="span12">
                 <h1>Hacker Brasil<br><small id="carregando"></small></h1>
                 <ul class="nav nav-tabs nav-stacked" id="links">
