@@ -30,7 +30,7 @@ function linksShow(links){
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
-            var linkText='<a target="_blank" href="'+link.url+'">';
+            var linkText='<a rel="nofollow" target="_blank" href="'+link.url+'">';
             linkText+=link.title;
             linkText+='</a>';
             linkText='<span class="pull-right data-right" x-date="'+link.created_at+'"></span>'+linkText;
