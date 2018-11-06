@@ -58,6 +58,10 @@ function linksUpdate(){
     });
 }
 
+function search(str){
+    console.log(str);
+}
+
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
     var months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
@@ -101,5 +105,8 @@ $(function() {
     });
     $('#10').on('scrollout', function(event, $all_elements) {
         $(this).animate({opacity: 0}, 200);
+    });
+    $("#s").keyup(function() {
+        search($(this).val());
     });
 });
