@@ -16,8 +16,8 @@
                 <input type="text" class="input-block-level" id="s" placeholder="Buscar...">
                 <ul class="nav nav-tabs nav-stacked" id="links">
                 </ul>
-                <div id="pacman">
-                    <img src="/pacman.gif" alt="Pacman">
+                <div id="gatilho">
+                    <img src="/brasil.gif" alt="Brasil" width="75" height="49">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
     <script src="/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/jquery.appear.js"></script>
     <script src="/jquery.scrolling.js"></script>
-    <script src="/script.js?v1"></script>
+    <script src="/script.js?v3"></script>
     <!-- Matomo -->
     <script type="text/javascript">
     var _paq = _paq || [];

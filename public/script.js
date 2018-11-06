@@ -29,7 +29,7 @@ function gatilhoDoFim(){//carrega links ao chegar no fim da lista
     if($('#s').val().length==0){
         buscaAtiva=false;
     }
-    $('#pacman').appear(function() {
+    $('#gatilho').appear(function() {
         if(buscaAtiva && nextId){
             carregarLinks(nextId,termosDaBuscaStr);
         }else if(nextId){
@@ -50,6 +50,7 @@ function linksShow(links){
     if(links['links'].length!=0){
         var i=0;
         var text='';
+        msg(links.msg);
         while (links['links'][i]) {
             var link=links['links'][i];
             title=timeConverter(link.created_at);
@@ -63,10 +64,9 @@ function linksShow(links){
         $('#links').append(text);
         linkUpdateInterval=setInterval(linksUpdate, 100);
         nextId=links.nextId;
-        msg(links.msg);
         gatilhoDoFim();
     }else{
-        log('erro ao exibir links');
+        msg(links.msg);
     }
 }
 

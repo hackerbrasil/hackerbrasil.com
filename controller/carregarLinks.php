@@ -82,8 +82,15 @@ if($count<=$linksPorPagina){
 }
 
 //11) seta as variaveis de output
+if($count==0){
+    $msg='Nenhum link encontrado';
+}elseif($count==1){
+    $msg='1 link encontrado';
+}else{
+    $msg=$count.' links encontrados';
+}
 $data=[
-    'msg'=>$count.' links encontrados',
+    'msg'=>$msg,
     'links'=>$links,
     'nextId'=>$nextId
 ];
