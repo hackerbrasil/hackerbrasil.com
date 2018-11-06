@@ -35,18 +35,19 @@ if(is_numeric($nextId)){
     ];
 }
 
+//6) caso a busca esteja ativa adiciona os termos da busca no where
 if(isset($_GET['s'])){
     $s=@$_GET['s'];
     $where['title[~]']=$s;
 }
 
-//6) baixa os links
+//7) baixa os links
 $links=$db->select('links','*',$where);
 
-//7) seta o próximo nextId
+//8) seta o próximo nextId
 $nextId=@$links[($linksPorPagina-1)]['id'];
 
-//8) caso o nextId não exista baixa os próximos 5
+//9) caso o nextId não exista baixa os próximos 5
 if(!$nextId){
     $where=[
         'LIMIT'=>($linksPorPagina+1),
@@ -62,15 +63,15 @@ if(!$nextId){
     }
 }
 
-//9) conta o numero total de links
+//10) conta o numero total de links
 $count=$db->count('links');
 
-//10) seta as variaveis de output
+//11) seta as variaveis de output
 $data=[
     'msg'=>$count.' links encontrados',
     'links'=>$links,
     'nextId'=>$nextId-1
 ];
 
-//11) printa o output em json
+//12) printa o output em json
 print json($data);
