@@ -16,7 +16,7 @@
                 <input type="text" class="input-block-level" id="s" placeholder="Buscar...">
                 <ul class="nav nav-tabs nav-stacked" id="links">
                 </ul>
-                <div id="gatilho">
+                <div id="gatilho" class="text-center">
                     <img src="/brasil.gif" alt="Brasil" width="75" height="49">
                 </div>
             </div>
