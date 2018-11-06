@@ -8,13 +8,13 @@ $db=db();
 $linksPorPagina=10;
 
 //3) recebe o nextId
-$nextId=@$_GET['nextId'];
-
-if(is_numeric($nextId)){
-    $nextId=$nextId;
+if(@is_numeric($_GET['nextId'])){
+    $nextId=$_GET['nextId'];
+}else{
+    $nextId=false;
 }
 
-//4) verifica se o nextId = false
+//4) nextId = false
 if($nextId=='false'){
     $where=[
         'LIMIT'=>$linksPorPagina,
@@ -24,7 +24,7 @@ if($nextId=='false'){
     ];
 }
 
-//5) verifica se o nextId é numerico
+//5) nextId numerico
 if(is_numeric($nextId)){
     $where=[
         'LIMIT'=>$linksPorPagina,
@@ -41,14 +41,16 @@ if(isset($_GET['s'])){
     $where['title[~]']=$s;
 }
 
+var_dump($nextId);
+
 //7) baixa os links
 $links=$db->select('links','*',$where);
 
 //8) seta o próximo nextId
 $nextId=@$links[($linksPorPagina-1)]['id'];
 
-//9) caso o nextId não exista baixa os próximos 5
-if(!$nextId){
+//9) caso o nextId não exista repete os mesmos resultados para completar a pagina
+if(!$nextId && !isset($_GET['s'])){
     $where=[
         'LIMIT'=>($linksPorPagina+1),
         'ORDER'=>[
@@ -74,4 +76,4 @@ $data=[
 ];
 
 //12) printa o output em json
-print json($data);
+//print json($data);
