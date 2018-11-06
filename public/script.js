@@ -1,27 +1,46 @@
 var i=0;
 var nextId=false;
 var linkUpdateInterval;
+var buscaAtiva=false;
+var termosDaBuscaStr=false;
 
-function carregarLinks(nextId){
-    var url='/carregarLinks?nextId='+nextId;
+function buscar(str){
+    nextId=false;
+    carregarLinks(nextId,str);
+}
+
+function carregarLinks(nextId,termosDaBuscaStr){
+    termosDaBuscaStr=termosDaBuscaStr;
+    if(termosDaBuscaStr){
+        buscaAtiva=true;
+        var url='/carregarLinks?nextId='+nextId+'&s='+termosDaBuscaStr;
+        limparLista();
+    }else{
+        buscaAtiva=false;
+        var url='/carregarLinks?nextId='+nextId;
+    }
     msg('Carregando links...');
     $.getJSON(url, function(links, status){
         linksShow(links);
     });
 }
 
-function gatilhoDoFim(){
+function gatilhoDoFim(){//carrega links ao chegar no fim da lista
     $('#pacman').appear(function() {
-        carregarLinks(nextId);
+        if(buscaAtiva){
+            carregarLinks(nextId);
+        }else{
+            carregarLinks(nextId,termosDaBuscaStr);
+        }
     });
 }
 
-function msg(msg){
+function msg(msg){//exibe uma mensagem
     $('#carregando').html(msg);
 }
 
-function log(mixed){
-    console.log(mixed);
+function limparLista(){
+    $('#links').html('');
 }
 
 function linksShow(links){
@@ -48,20 +67,15 @@ function linksShow(links){
     }
 }
 
-function linksUpdate(){
+function linksUpdate(){//atualizar o cronometro
     $('#links > li > span').each(function (index, value) {
         var xDate=$(this).attr('x-date');
-
         var dataText=timeSince(xDate);
         $(this).html(' <small class="badge">'+dataText+'</small>');
     });
 }
 
-function search(str){
-    console.log(str);
-}
-
-function timeConverter(UNIX_timestamp){
+function timeConverter(UNIX_timestamp){//unix epoch to date
     var a = new Date(UNIX_timestamp * 1000);
     var months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
     var year = a.getFullYear();
@@ -78,7 +92,7 @@ function timeConverter(UNIX_timestamp){
     return time;
 }
 
-function timeSince(date) {
+function timeSince(date) {//cronômetro
     var seconds = Math.floor(((new Date().getTime()/1000) - date)),
     interval = Math.floor(seconds / 31536000);
     //if (interval > 1) return interval + " y";
@@ -96,7 +110,7 @@ function timeSince(date) {
     return Math.floor(seconds) + " s";
 }
 
-$(function() {
+$(function() {//gatilhos
     carregarLinks(nextId);
     $('#10').scrolling({ offsetTop: -200 });
     $('#10').on('scrollin', function(event, $all_elements) {
@@ -106,6 +120,6 @@ $(function() {
         $(this).animate({opacity: 0}, 200);
     });
     $("#s").keyup(function() {
-        search($(this).val());
+        buscar($(this).val());
     });
 });

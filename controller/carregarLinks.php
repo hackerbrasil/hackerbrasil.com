@@ -35,6 +35,11 @@ if(is_numeric($nextId)){
     ];
 }
 
+if(isset($_GET['s'])){
+    $s=@$_GET['s'];
+    $where['title[~]']=$s;
+}
+
 //6) baixa os links
 $links=$db->select('links','*',$where);
 
