@@ -114,16 +114,8 @@ function timeSince(date) {//cronômetro
 }
 
 $(function() {//gatilhos
-    $('#s').val('');
-    $('#s').focus();
+    $('#s').val('').focus();
     carregarLinks(nextId);
-    $('#10').scrolling({ offsetTop: -200 });
-    $('#10').on('scrollin', function(event, $all_elements) {
-        $(this).animate({opacity: 1}, 600);
-    });
-    $('#10').on('scrollout', function(event, $all_elements) {
-        $(this).animate({opacity: 0}, 200);
-    });
     $("#s").keyup(function() {
         buscar($(this).val());
     });
