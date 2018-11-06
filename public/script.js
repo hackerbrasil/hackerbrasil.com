@@ -51,8 +51,7 @@ function linksShow(links){
 function linksUpdate(){
     $('#links > li > span').each(function (index, value) {
         var xDate=$(this).attr('x-date');
-        // var mom=moment.unix(xData);
-        // var dataText=mom.startOf("seconds").fromNow();
+
         var dataText=timeSince(xDate);
         $(this).html(' <small class="badge">'+dataText+'</small>');
     });
