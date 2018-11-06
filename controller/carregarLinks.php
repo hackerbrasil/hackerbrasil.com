@@ -15,7 +15,7 @@ if(@is_numeric($_GET['nextId'])){
 }
 
 //4) nextId = false
-if($nextId=='false'){
+if(!$nextId){
     $where=[
         'LIMIT'=>$linksPorPagina,
         'ORDER'=>[
@@ -36,12 +36,11 @@ if(is_numeric($nextId)){
 }
 
 //6) caso a busca esteja ativa adiciona os termos da busca no where
+$s=false;
 if(isset($_GET['s'])){
     $s=@$_GET['s'];
     $where['title[~]']=$s;
 }
-
-var_dump($nextId);
 
 //7) baixa os links
 $links=$db->select('links','*',$where);
@@ -66,14 +65,28 @@ if(!$nextId && !isset($_GET['s'])){
 }
 
 //10) conta o numero total de links
-$count=$db->count('links');
+if($s){
+    $where=[
+        'title[~]'=>$s
+    ];
+    $count=$db->count('links',$where);
+}else{
+    $count=$db->count('links');
+}
+
+//11) zere o nextId se necessário
+if($count<=$linksPorPagina){
+    $nextId=false;
+}else{
+    $nextId=$nextId-1;
+}
 
 //11) seta as variaveis de output
 $data=[
     'msg'=>$count.' links encontrados',
     'links'=>$links,
-    'nextId'=>$nextId-1
+    'nextId'=>$nextId
 ];
 
 //12) printa o output em json
-//print json($data);
+print json($data);

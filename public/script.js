@@ -26,11 +26,14 @@ function carregarLinks(nextId,termosDaBuscaStr){
 }
 
 function gatilhoDoFim(){//carrega links ao chegar no fim da lista
+    if($('#s').val().length==0){
+        buscaAtiva=false;
+    }
     $('#pacman').appear(function() {
-        if(buscaAtiva){
-            carregarLinks(nextId);
-        }else{
+        if(buscaAtiva && nextId){
             carregarLinks(nextId,termosDaBuscaStr);
+        }else if(nextId){
+            carregarLinks(nextId);
         }
     });
 }
