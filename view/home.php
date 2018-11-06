@@ -15,6 +15,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <h1>Hacker Brasil<br><small id="carregando"></small></h1>
+                <input type="text" class="input-block-level" id="q" placeholder="Buscar...">
                 <ul class="nav nav-tabs nav-stacked" id="links">
                 </ul>
                 <div id="pacman">

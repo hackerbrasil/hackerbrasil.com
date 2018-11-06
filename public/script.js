@@ -30,7 +30,8 @@ function linksShow(links){
         var text='';
         while (links['links'][i]) {
             var link=links['links'][i];
-            var linkText='<a rel="nofollow" target="_blank" href="'+link.url+'">';
+            title=timeConverter(link.created_at);
+            var linkText='<a title="'+title+'" rel="nofollow" target="_blank" href="'+link.url+'">';
             linkText+=link.title;
             linkText+='</a>';
             linkText='<span class="pull-right data-right" x-date="'+link.created_at+'"></span>'+linkText;
@@ -57,14 +58,34 @@ function linksUpdate(){
     });
 }
 
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    hour=("00" + hour).slice(-2);
+    var min = a.getMinutes();
+    min=("00" + min).slice(-2);
+    var sec = a.getSeconds();
+    sec=("00" + sec).slice(-2);
+    //var time = date + '/' + month + '/' + year + ' ' + hour + ':' + min + ':' + sec ;
+    var time = date + '/' + month + '/' + year;
+    return time;
+}
+
 function timeSince(date) {
     var seconds = Math.floor(((new Date().getTime()/1000) - date)),
     interval = Math.floor(seconds / 31536000);
-    if (interval > 1) return interval + " y";
+    //if (interval > 1) return interval + " y";
+    if (interval >= 1) return timeConverter(date);
     interval = Math.floor(seconds / 2592000);
-    if (interval > 1) return interval + " m";
+    //if (interval > 1) return interval + " m";
+    if (interval >= 1) return timeConverter(date);
     interval = Math.floor(seconds / 86400);
-    if (interval >= 1) return interval + " d";
+    //if (interval >= 1) return interval + " d";
+    if (interval >= 1) return timeConverter(date);
     interval = Math.floor(seconds / 3600);
     if (interval >= 1) return interval + " h";
     interval = Math.floor(seconds / 60);
