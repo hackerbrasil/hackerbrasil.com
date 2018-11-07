@@ -1,4 +1,5 @@
 <?php
+//0) dorme
 //sleep(1);
 
 //1) seta o db
@@ -81,7 +82,20 @@ if($count<=$linksPorPagina){
     $nextId=$nextId-1;
 }
 
-//11) seta as variaveis de output
+//12) adiciona a lista de ids dos canais
+foreach($links as $key=>$value){
+    $where=[
+        'id'=>$value['feed_id']
+    ];
+    $feed=$db->get("feeds","*",$where);
+    if($feed){
+        $links[$key]['feed_name']=$feed['name'];
+    }else{
+        $links[$key]['feed_name']='Canal não encontrado';
+    }
+}
+
+//13) seta as variaveis de output
 if($count==0){
     $msg='Nenhum link encontrado';
 }elseif($count==1){
@@ -95,5 +109,5 @@ $data=[
     'nextId'=>$nextId
 ];
 
-//12) printa o output em json
+//14) printa o output em json
 print json($data);

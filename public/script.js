@@ -4,25 +4,43 @@ var linkUpdateInterval;
 var buscaAtiva=false;
 var termosDaBuscaStr=false;
 
-function buscar(str){
-    nextId=false;
-    carregarLinks(nextId,str);
+function atualizarADataDosLinks(){//atualizar o cronometro
+    $('#links > li > span').each(function (index, value) {
+        var xDate=$(this).attr('x-date');
+        var dataText=timeSince(xDate);
+        $(this).html(' <small class="badge">'+dataText+'</small>');
+    });
 }
 
-function carregarLinks(nextId,termosDaBuscaStr){
+function baixarLinks(nextId,termosDaBuscaStr){
     termosDaBuscaStr=termosDaBuscaStr;
     if(termosDaBuscaStr){
         buscaAtiva=true;
-        var url='/carregarLinks?nextId='+nextId+'&s='+termosDaBuscaStr;
+        var url='/baixarLinks?nextId='+nextId+'&s='+termosDaBuscaStr;
         limparLista();
     }else{
         buscaAtiva=false;
-        var url='/carregarLinks?nextId='+nextId;
+        var url='/baixarLinks?nextId='+nextId;
     }
     msg('Carregando links...');
     $.getJSON(url, function(links, status){
-        linksShow(links);
+        mostrarLinks(links);
     });
+}
+
+function buscarLinks(str){
+    if(str.length>=2){
+        nextId=false;
+        baixarLinks(nextId,str);
+    }else{
+        limparLista();
+        baixarLinks(nextId);
+    }
+}
+
+function clicouNoLinkDoCanal(id){
+    document.location='/feed/'+id;
+    return false;
 }
 
 function gatilhoDoFim(){//carrega links ao chegar no fim da lista
@@ -31,22 +49,18 @@ function gatilhoDoFim(){//carrega links ao chegar no fim da lista
     }
     $('#gatilho').appear(function() {
         if(buscaAtiva && nextId){
-            carregarLinks(nextId,termosDaBuscaStr);
+            baixarLinks(nextId,termosDaBuscaStr);
         }else if(nextId){
-            carregarLinks(nextId);
+            baixarLinks(nextId);
         }
     });
-}
-
-function msg(msg){//exibe uma mensagem
-    $('#carregando').html(msg);
 }
 
 function limparLista(){
     $('#links').html('');
 }
 
-function linksShow(links){
+function mostrarLinks(links){
     if(links['links'].length!=0){
         var i=0;
         var text='';
@@ -54,15 +68,22 @@ function linksShow(links){
         while (links['links'][i]) {
             var link=links['links'][i];
             title=timeConverter(link.created_at);
-            var linkText='<a title="'+title+'" rel="nofollow" target="_blank" href="'+link.url+'">';
+            var feedId=link.feed_id;
+            var feedName=link.feed_name;
+            var nomeDoCanal='<small onclick="return clicouNoLinkDoCanal('+feedId+')"';
+            nomeDoCanal+='class="badge badge-info">';
+            nomeDoCanal+=feedName+'</small>';
+            nomeDoCanal='<span class="pull-left badge-left">'+nomeDoCanal+'</span>';
+            var linkText='<a title="'+title+'" rel="nofollow" target="_blank"';
+            linkText+=' href="'+link.url+'">'+nomeDoCanal+' ';
             linkText+=link.title;
             linkText+='</a>';
-            linkText='<span class="pull-right data-right" x-date="'+link.created_at+'"></span>'+linkText;
+            linkText='<span class="pull-right badge-right" x-date="'+link.created_at+'"></span>'+linkText;
             text +='<li>'+linkText+'</li>';
             i++;
         }
         $('#links').append(text);
-        linkUpdateInterval=setInterval(linksUpdate, 100);
+        linkUpdateInterval=setInterval(atualizarADataDosLinks, 100);
         nextId=links.nextId;
         gatilhoDoFim();
     }else{
@@ -70,12 +91,8 @@ function linksShow(links){
     }
 }
 
-function linksUpdate(){//atualizar o cronometro
-    $('#links > li > span').each(function (index, value) {
-        var xDate=$(this).attr('x-date');
-        var dataText=timeSince(xDate);
-        $(this).html(' <small class="badge">'+dataText+'</small>');
-    });
+function msg(msg){//exibe uma mensagem
+    $('#carregando').html(msg);
 }
 
 function timeConverter(UNIX_timestamp){//unix epoch to date
@@ -115,8 +132,8 @@ function timeSince(date) {//cronômetro
 
 $(function() {//gatilhos
     $('#s').val('').focus();
-    carregarLinks(nextId);
+    baixarLinks(nextId);
     $("#s").keyup(function() {
-        buscar($(this).val());
+        buscarLinks($(this).val());
     });
 });

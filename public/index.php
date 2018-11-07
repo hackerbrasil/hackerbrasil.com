@@ -14,8 +14,8 @@ switch($controller){
     case '/':
     view("home");
     break;
-    case 'carregarLinks':
-    controller("carregarLinks");
+    case 'baixarLinks':
+    controller("baixarLinks");
     break;
     default:
     view('404');
