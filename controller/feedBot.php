@@ -52,7 +52,7 @@ function feedExists($url){
 }
 
 function feedLoad(){
-    $feeds=require 'feeds.php';
+    $feeds=require 'listaDeFeeds.php';
     foreach($feeds as $feedName=>$feedUrl){
         $feed=feedExists($feedUrl);
         if($feed){

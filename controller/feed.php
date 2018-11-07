@@ -1,0 +1,13 @@
+<?php
+helper("feed");
+$id=segment(2);
+$feed=false;
+if(is_numeric($id)){
+    $feed=getFeedById($id);
+}
+if($feed){
+    mostrarTelaDoFeed($feed);
+}else{
+    view('404');
+}
+?>

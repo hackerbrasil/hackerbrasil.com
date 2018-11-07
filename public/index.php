@@ -17,6 +17,9 @@ switch($controller){
     case 'baixarLinks':
     controller("baixarLinks");
     break;
+    case 'feed':
+    controller("feed");
+    break;
     default:
     view('404');
     break;
