@@ -4,6 +4,11 @@ var linkUpdateInterval;
 var buscaAtiva=false;
 var termosDaBuscaStr=false;
 
+function abrirPaginaDoFeed(id){
+    javascript:void(open('/feed/'+id))
+    return false;
+}
+
 function atualizarADataDosLinks(){//atualizar o cronometro
     $('#links > li > span').each(function (index, value) {
         var xDate=$(this).attr('x-date');
@@ -38,11 +43,6 @@ function buscarLinks(str){
     }
 }
 
-function clicouNoLinkDoCanal(id){
-    document.location='/feed/'+id;
-    return false;
-}
-
 function gatilhoDoFim(){//carrega links ao chegar no fim da lista
     if($('#s').val().length==0){
         buscaAtiva=false;
@@ -70,7 +70,7 @@ function mostrarLinks(links){
             title=timeConverter(link.created_at);
             var feedId=link.feed_id;
             var feedName=link.feed_name;
-            var nomeDoCanal='<small onclick="return clicouNoLinkDoCanal('+feedId+')"';
+            var nomeDoCanal='<small onclick="return abrirPaginaDoFeed('+feedId+')"';
             nomeDoCanal+='class="badge badge-info">';
             nomeDoCanal+=feedName+'</small>';
             nomeDoCanal='<span class="pull-left badge-left">'+nomeDoCanal+'</span>';
