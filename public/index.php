@@ -1,20 +1,23 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//dependencias
 require '../inc/autoload.php';
+if(isDev()){
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
 
+//regras
 $segment=segment();
 $controller=$segment[1];
-
 switch($controller){
     case '/':
-        view("home");
-        break;
+    view("home");
+    break;
     case 'carregarLinks':
-        controller("carregarLinks");
-        break;
+    controller("carregarLinks");
+    break;
     default:
-        view('404');
-        break;
+    view('404');
+    break;
 }
