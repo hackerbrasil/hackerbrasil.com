@@ -15,5 +15,5 @@ return array(
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Desarrolla2\\Test\\Cache\\' => array($vendorDir . '/desarrolla2/cache/test'),
     'Desarrolla2\\Cache\\' => array($vendorDir . '/desarrolla2/cache/src'),
-    'Basic\\' => array($vendorDir . '/basic/migration/src'),
+    'Basic\\' => array($vendorDir . '/basic/migration/src', $vendorDir . '/basic/auth/src'),
 );
