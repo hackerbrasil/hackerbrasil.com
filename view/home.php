@@ -20,6 +20,15 @@
             </div>
         </div>
     </div>
-<?php view("inc/footer"); ?>
+    <?php view("inc/footer"); ?>
+    <script type="text/javascript">
+    $(function() {//gatilhos
+        $('#s').val('').focus();
+        baixarLinks(nextId);
+        $("#s").keyup(function() {
+            buscarLinks($(this).val());
+        });
+    });
+</script>
 </body>
 </html>

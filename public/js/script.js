@@ -152,11 +152,3 @@ function timeSince(date) {//cronômetro
     if (interval >= 1) return interval + " m";
     return Math.floor(seconds) + " s";
 }
-
-$(function() {//gatilhos
-    $('#s').val('').focus();
-    baixarLinks(nextId);
-    $("#s").keyup(function() {
-        buscarLinks($(this).val());
-    });
-});

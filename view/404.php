@@ -6,8 +6,14 @@
     <?php view('inc/assets'); ?>
 </head>
 <body>
-    <h1>Erro 404</h1>
-    <p>Página não encontrada</p>
-    <?php inc("inc/footer"); ?>
+    <div class="container-flud">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>Erro 404</h1>
+                <p>Página não encontrada</p>        
+            </div>
+        </div>
+    </div>
+    <?php view("inc/footer"); ?>
 </body>
 </html>
