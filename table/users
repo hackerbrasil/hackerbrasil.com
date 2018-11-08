@@ -1,0 +1,8 @@
+id
+email
+name
+password
+type
+token
+token_expiration
+created_at

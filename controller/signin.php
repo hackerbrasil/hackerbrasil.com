@@ -1,8 +1,15 @@
 <?php
 helper("signin");
-if(getMethod('POST')){
-
+if(getMethod()=='POST'){
+    $user=signin();
+    if(isset($user['error'])){
+        $data['error']=$user['error'];
+        view('signin',$data);
+    }else{
+        var_dump($user);
+        //redirect('/dashboard');
+    }
 }else{
-
+    view('signin');
 }
 ?>
