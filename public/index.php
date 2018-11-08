@@ -17,8 +17,14 @@ switch($controller){
     case 'baixarLinks':
     controller("baixarLinks");
     break;
+    case 'dashboard':
+    controller("dashboard");
+    break;
     case 'feed':
     controller("feed");
+    break;
+    case 'signin':
+    controller("signin");
     break;
     default:
     view('404');
