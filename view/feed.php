@@ -23,5 +23,8 @@
             <i class="icon-white icon-refresh"></i>
             Atualizar
         </button>
-    	<button type="button" data-dismiss="modal" class="btn">Fechar</button>
+    	<button type="button" data-dismiss="modal" class="btn">
+            <i class="icon-remove"></i>
+            Fechar
+        </button>
     </div>
