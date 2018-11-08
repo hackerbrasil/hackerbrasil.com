@@ -5,7 +5,30 @@ var buscaAtiva=false;
 var termosDaBuscaStr=false;
 
 function abrirPaginaDoFeed(id){
-    javascript:void(open('/feed/'+id))
+    var url='/feed/'+id;
+    //javascript:void(open(url))
+    var $modal = $('#ajax-modal');
+    // create the backdrop and wait for next modal to be triggered
+    $('body').modalmanager('loading');
+
+    setTimeout(function(){
+        $modal.load(url, '', function(){
+            $modal.modal();
+        });
+    }, 1000);
+
+    $modal.on('click', '.update', function(){
+        $modal.modal('loading');
+        setTimeout(function(){
+            $modal
+            .modal('loading')
+            .find('.modal-body .btn-large')
+            .removeClass('btn-primary')
+            .addClass('disabled')
+            .html('<i class="icon icon-refresh"></i> Atualizado');
+        }, 1000);
+    });
+
     return false;
 }
 
