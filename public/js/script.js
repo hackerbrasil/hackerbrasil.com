@@ -22,7 +22,7 @@ function abrirPaginaDoFeed(id){
         setTimeout(function(){
             $modal
             .modal('loading')
-            .find('.modal-body .btn-large')
+            .find('.modal-footer .update')
             .removeClass('btn-primary')
             .addClass('disabled')
             .html('<i class="icon icon-refresh"></i> Atualizado');
