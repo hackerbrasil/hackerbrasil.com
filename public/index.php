@@ -23,6 +23,9 @@ switch($controller){
     case 'feed':
     controller("feed");
     break;
+    case 'logout':
+    controller("logout");
+    break;
     case 'signin':
     controller("signin");
     break;

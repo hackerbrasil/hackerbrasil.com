@@ -1,5 +1,5 @@
 <?php
-helper('signin');
+helper('auth');
 $user=isAuth();
 if($user){
     $data=[
