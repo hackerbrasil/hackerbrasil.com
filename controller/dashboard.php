@@ -1,3 +1,12 @@
 <?php
 helper('signin');
- ?>
+$user=isAuth();
+if($user){
+    $data=[
+        'user'=>$user
+    ];
+    view('dashboard',$data);
+}else{
+    redirect('/signin');
+}
+?>

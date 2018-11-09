@@ -42,9 +42,19 @@
     <div class="container-flud">
         <form class="form-signin" method="post" action="/signin">
             <h2 class="form-signin-heading">Entrar</h2>
+            <?php
+            if(isset($error)){
+                ?>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Dados incorretos</strong>
+                </div>
+                <?php
+            }
+            ?>
             <input type="text" class="input-block-level" placeholder="Email" name="email">
             <input type="password" class="input-block-level" placeholder="Senha" name="password">
-            <button class="btn btn-large btn-primary" type="submit">Entrar</button>
+            <button class="btn btn-large btn-primary btn-block" type="submit">Entrar</button>
         </form>
     </div>
     <?php view("inc/footer"); ?>
