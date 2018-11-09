@@ -5,20 +5,24 @@ migrar_tabelas() {
     clear
     echo "migrando as tabelas..."
     php migrate.php
-    echo "pronto"
 }
 
 atualizar_os_links() {
     clear
     echo "atualizando os links..."
     php cron.php
-    echo "pronto"
 }
 
+criar_super_usuario() {
+    migrar_tabelas
+    echo "criando usuário..."
+    php bin/superUser.php
+}
 
 echo "Digite a opção:"
 echo "1) migrar tabelas"
 echo "2) atualizar os links"
+echo "3) criar super usuário"
 printf "Opção número "
 read opt
 
@@ -26,5 +30,6 @@ case $opt
 in
     1) migrar_tabelas ;;
     2) atualizar_os_links ;;
+    3) criar_super_usuario ;;
     *) echo "opção inválida" ;;
 esac
