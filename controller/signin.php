@@ -6,8 +6,7 @@ if(getMethod()=='POST'){
         $data['error']=$user['error'];
         view('signin',$data);
     }else{
-        var_dump($user);
-        //redirect('/dashboard');
+        redirect('/dashboard');
     }
 }else{
     view('signin');
