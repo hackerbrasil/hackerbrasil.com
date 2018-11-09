@@ -8,6 +8,8 @@ if(getMethod()=='POST'){
     }else{
         redirect('/dashboard');
     }
+}elseif(isAuth()){
+    redirect('/dashboard');
 }else{
     view('signin');
 }
