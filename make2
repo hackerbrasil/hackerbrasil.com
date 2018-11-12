@@ -1,12 +1,6 @@
 #!/bin/bash
 clear
 
-migrar_tabelas() {
-    clear
-    echo "migrando as tabelas..."
-    php migrate.php
-}
-
 atualizar_os_links() {
     clear
     echo "atualizando os links..."
@@ -19,8 +13,16 @@ criar_super_usuario() {
     php bin/superUser.php
 }
 
+deploy() {
+    clear
+    echo "atualizando o repositório..."
+    git pull origin master
+    echo "migrando as tabelas..."
+    php migrate.php
+}
+
 echo "Digite a opção:"
-echo "1) migrar tabelas"
+echo "1) deploy"
 echo "2) atualizar os links"
 echo "3) criar super usuário"
 printf "Opção número "
@@ -28,7 +30,7 @@ read opt
 
 case $opt
 in
-    1) migrar_tabelas ;;
+    1) deploy ;;
     2) atualizar_os_links ;;
     3) criar_super_usuario ;;
     *) echo "opção inválida" ;;
