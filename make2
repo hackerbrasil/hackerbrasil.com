@@ -17,16 +17,22 @@ deploy() {
     clear
     echo "atualizando o repositório..."
     git pull origin master
+    echo "git pull ok"
     echo "migrando as tabelas..."
     php migrate.php
 }
 
-echo "Digite a opção:"
-echo "1) deploy"
-echo "2) atualizar os links"
-echo "3) criar super usuário"
-printf "Opção número "
-read opt
+if [ -z "$1" ]
+	then
+        echo "Digite a opção:"
+        echo "1) deploy"
+        echo "2) atualizar os links"
+        echo "3) criar super usuário"
+        printf "Opção número "
+		read opt
+	else
+		opt=$1
+fi
 
 case $opt
 in
