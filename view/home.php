@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker Gaucho</title>
+    <title>Hacker Brasil</title>
     <?php view('inc/assets'); ?>
 
 </head>

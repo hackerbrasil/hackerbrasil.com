@@ -6,7 +6,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="/">Hacker Brasil</a>
+            <a class="brand" href="/">
+                <img src="/img/flags/br.svg" alt="" class="logo">
+                Hacker Brasil</a>
             <div class="nav-collapse collapse">
                 <div class="navbar-text pull-right" id="carregando">
 

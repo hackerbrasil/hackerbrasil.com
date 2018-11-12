@@ -13,7 +13,13 @@
 }
 
 label small{
-    color:gray;    
+    color:gray;
+}
+
+.logo{
+    height:1em;
+    margin-top: -5px;
+    width: auto;
 }
 
 /* Large desktop */
