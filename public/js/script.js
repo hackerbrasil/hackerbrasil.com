@@ -66,6 +66,14 @@ function buscarLinks(str){
     }
 }
 
+function clicouEmUmLink(id){
+    var url='/api/clicouEmUmLink/'+id;
+    $.getJSON(url, function(response, status){
+        console.log('id='+id);
+    });
+        return true;
+}
+
 function gatilhoDoFim(){//carrega links ao chegar no fim da lista
     if($('#s').val().length==0){
         buscaAtiva=false;
@@ -97,7 +105,7 @@ function mostrarLinks(links){
             nomeDoCanal+='class="badge badge-info">';
             nomeDoCanal+=feedName+'</small>';
             nomeDoCanal='<span class="pull-left badge-left">'+nomeDoCanal+'</span>';
-            var linkText='<a title="'+title+'" rel="nofollow" target="_blank"';
+            var linkText='<a class="link" onclick="return clicouEmUmLink('+link.id+');" title="'+title+'" rel="nofollow" target="_blank"';
             linkText+=' href="'+link.url+'">'+nomeDoCanal+' ';
             linkText+=link.title;
             linkText+='</a>';

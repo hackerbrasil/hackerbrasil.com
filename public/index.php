@@ -14,6 +14,9 @@ switch($controller){
     case '/':
     view("home");
     break;
+    case 'api':
+    controller('api');
+    break;
     case 'baixarLinks':
     controller("baixarLinks");
     break;

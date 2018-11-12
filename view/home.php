@@ -25,6 +25,7 @@
     $(function() {//gatilhos
         $('#s').val('').focus();
         baixarLinks(nextId);
+
         $("#s").keyup(function() {
             buscarLinks($(this).val());
         });
