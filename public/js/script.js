@@ -6,17 +6,13 @@ var termosDaBuscaStr=false;
 
 function abrirPaginaDoFeed(id){
     var url='/feed/'+id;
-    //javascript:void(open(url))
     var $modal = $('#ajax-modal');
-    // create the backdrop and wait for next modal to be triggered
     $('body').modalmanager('loading');
-
     setTimeout(function(){
         $modal.load(url, '', function(){
             $modal.modal();
         });
     }, 1000);
-
     $modal.on('click', '.update', function(){
         $modal.modal('loading');
         setTimeout(function(){
@@ -28,7 +24,6 @@ function abrirPaginaDoFeed(id){
             .html('<i class="icon icon-refresh"></i> Atualizado');
         }, 1000);
     });
-
     return false;
 }
 
@@ -110,7 +105,8 @@ function mostrarLinks(links){
             nomeDoCanal+=feedName+'</small>';
             nomeDoCanal='<span class="pull-left badge-left">'+nomeDoCanal+'</span>';
             var linkText='<a x-id="'+link.id+'" onclick="return clicouEmUmLink(this);" title="'+title+'" rel="nofollow" target="_blank"';
-            linkText+=' href="'+link.url+'">'+nomeDoCanal+' ';
+            //linkText+=' href="'+link.url+'">'+nomeDoCanal+' ';
+            linkText+=' href="'+link.url+'">';
             linkText+=link.title;
             linkText+='</a>';
             linkText='<span class="pull-right badge-right" x-date="'+link.created_at+'"></span>'+linkText;
