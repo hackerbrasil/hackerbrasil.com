@@ -12,11 +12,21 @@
     background-color: gray;
 }
 
+label small{
+    color:gray;    
+}
+
 /* Large desktop */
-@media (min-width: 1200px) { ... }
+@media (min-width: 1200px) {
+    body {
+        padding-top: 40px;
+    }
+}
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { ... }
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) { ... }
