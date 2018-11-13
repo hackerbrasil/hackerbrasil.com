@@ -28,7 +28,7 @@ function abrirPaginaDoFeed(id){
 }
 
 function atualizarADataDosLinks(){//atualizar o cronometro
-    $('#links > li > span').each(function (index, value) {
+    $('.listaDeLinks > li > span').each(function (index, value) {
         var xDate=$(this).attr('x-date');
         var dataText=timeSince(xDate);
         $(this).html(' <small class="badge">'+dataText+'</small>');

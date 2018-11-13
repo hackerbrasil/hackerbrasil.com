@@ -1,0 +1,9 @@
+<?php
+$segment=segment();
+if(segment(2)=='links'){
+    controller("top10/links");
+}
+if(segment(2)=='sites'){
+    controller("top10/sites");
+}
+ ?>

@@ -6,25 +6,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="/">
-                <img src="/img/flags/br.svg" alt="" class="logo">
+            <a class="brand" href="/" title="Hacker Brasil">
+                <img src="/img/flags/br.svg" alt="Hacker Brasil" class="logo">
                 Hacker Brasil</a>
-            <div class="nav-collapse collapse">
-                <div class="navbar-text pull-right" id="carregando">
+                <div class="nav-collapse collapse">
+                    <div class="navbar-text pull-right" id="carregando">
 
-                </div>
-                <ul class="nav" id="navOnline">
-
-                </ul>
-            </div><!--/.nav-collapse -->
+                    </div>
+                    <ul class="nav" id="navOnline">
+                        <li><a href="/top10/links">Top 10 links</a></li>
+                        <li><a href="/top10/sites">Top 10 sites</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
     </div>
-</div>
-
-<script type="text/javascript">
-$("#navOnline li a").each(function(index) {
-    if($.trim(this.href) == window.location) {
-        $(this).closest('li').addClass("active");
-    }
-});
+    <script type="text/javascript">
+    $("#navOnline li a").each(function(index) {
+        if($.trim(this.href) == window.location) {
+            $(this).closest('li').addClass("active");
+        }
+    });
 </script>

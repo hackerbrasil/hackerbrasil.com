@@ -12,7 +12,7 @@ $segment=segment();
 $controller=$segment[1];
 switch($controller){
     case '/':
-    view("home");
+    controller("home");
     break;
     case 'api':
     controller('api');
@@ -31,6 +31,9 @@ switch($controller){
     break;
     case 'signin':
     controller("signin");
+    break;
+    case 'top10':
+    controller("top10");
     break;
     default:
     view('404');

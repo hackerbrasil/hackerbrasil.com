@@ -8,6 +8,7 @@ atualizar_os_links() {
 }
 
 criar_super_usuario() {
+    clear
     migrar_tabelas
     echo "criando usuário..."
     php bin/superUser.php
@@ -18,6 +19,10 @@ deploy() {
     echo "atualizando o repositório..."
     git pull origin master
     echo "git pull ok"
+    migrar_tabelas
+}
+
+migrar_tabelas(){
     echo "migrando as tabelas..."
     php migrate.php
 }
@@ -25,6 +30,7 @@ deploy() {
 if [ -z "$1" ]
 	then
         echo "Digite a opção:"
+        echo "0) migrar tabelas"
         echo "1) deploy"
         echo "2) atualizar os links"
         echo "3) criar super usuário"
@@ -36,6 +42,7 @@ fi
 
 case $opt
 in
+    0) clear && migrar_tabelas ;;
     1) deploy ;;
     2) atualizar_os_links ;;
     3) criar_super_usuario ;;
