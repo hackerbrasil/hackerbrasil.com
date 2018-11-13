@@ -22,7 +22,7 @@
                             $space='';
                         }
                         $badge='<span class="badge">'.$space.$i++.'°</span> ';
-                        $html='<a href="'.$site['url'].'">'.$badge.$site['name'].'</a>';
+                        $html='<a onclick="javascript:abrirPaginaDoFeed('.$site['id'].')" href="javascript:void();">'.$badge.$site['name'].'</a>';
                         $data='<span class="pull-right badge-right" x-date="'.$site['created_at'].'"></span>';
                         print '<li>'.$data.$html.'</li>';
                     }

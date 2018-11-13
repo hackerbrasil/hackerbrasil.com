@@ -13,17 +13,6 @@ function abrirPaginaDoFeed(id){
             $modal.modal();
         });
     }, 1000);
-    $modal.on('click', '.update', function(){
-        $modal.modal('loading');
-        setTimeout(function(){
-            $modal
-            .modal('loading')
-            .find('.modal-footer .update')
-            .removeClass('btn-primary')
-            .addClass('disabled')
-            .html('<i class="icon icon-refresh"></i> Atualizado');
-        }, 1000);
-    });
     return false;
 }
 

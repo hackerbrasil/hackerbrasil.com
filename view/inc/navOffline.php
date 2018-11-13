@@ -14,7 +14,7 @@
 
                     </div>
                     <ul class="nav" id="navOnline">
-                        <li><a href="/top10/links">Top 10 links</a></li>
+                        <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
                         <li><a href="/top10/sites">Top 10 sites</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->

@@ -15,14 +15,26 @@
                 print 'links';
             }
             ?>
-            </small>
+        </small>
+        /
+        <?php
+        $visitas=$feed['visitas'];
+        if($visitas<1){
+            $visitas='Zero';
+            $msg=' visita';
+        }
+        if($visitas==1){
+            $msg=' visita';
+        }
+        if($visitas>1){
+            $msg=' visitas';
+        }
+        $msg='<small>'.$msg.'</small>';
+        $cliques=$visitas.$msg;
+        print $cliques; ?>
         </h1>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary update">
-            <i class="icon-white icon-refresh"></i>
-            Atualizar
-        </button>
     	<button type="button" data-dismiss="modal" class="btn">
             <i class="icon-remove"></i>
             Fechar
