@@ -7,6 +7,11 @@ atualizar_os_links() {
     php cron.php
 }
 
+criar_feed() {
+    clear
+    php bin/criarFeed.php
+}
+
 criar_super_usuario() {
     clear
     migrar_tabelas
@@ -34,6 +39,7 @@ if [ -z "$1" ]
         echo "1) deploy"
         echo "2) atualizar os links"
         echo "3) criar super usuário"
+        echo "4) criar ou atualizar feed"
         printf "Opção número "
 		read opt
 	else
@@ -46,5 +52,6 @@ in
     1) deploy ;;
     2) atualizar_os_links ;;
     3) criar_super_usuario ;;
+    4) criar_feed ;;
     *) echo "opção inválida" ;;
 esac

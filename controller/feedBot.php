@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 use FastFeed\Factory;
 
 function feedBaixar($feedId,$feedUrl){
@@ -41,7 +37,12 @@ function feedCreate($feedName,$feedUrl,$feedLanguage='pt'){
         'language'=>$feedLanguage,
         'created_at'=>time()
     ];
-    db()->insert('feeds',$data);
+    $db=db();
+    if($db->insert('feeds',$data)){
+        return $db->id();
+    }else{
+        return false;
+    }
 }
 
 function feedExists($url){
@@ -73,5 +74,9 @@ function feedUpdateName($feedName,$feedId){
     $where=[
         'id'=>$feedId
     ];
-    db()->update('feed',$data,$where);
+    if(db()->update('feeds',$data,$where)){
+        return true;
+    }else{
+        return false;
+    }
 }
