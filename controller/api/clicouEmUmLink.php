@@ -2,6 +2,8 @@
 $id=segment(3);
 if(is_numeric($id)){
     $db=db();
+    //verifica se o mesmo link já foi visitado pelo mesmo ip (proteção contra flood)
+
     //adiciona a visita ao link
     $where=[
         'id'=>$id
