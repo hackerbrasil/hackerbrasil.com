@@ -1,6 +1,6 @@
 <?php
 //0) dorme
-sleep(1);
+sleep(2);
 
 //1) seta o db
 $db=db();

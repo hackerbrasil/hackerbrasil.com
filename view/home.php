@@ -17,7 +17,7 @@
                 <ul class="nav nav-tabs nav-stacked listaDeLinks" id="links">
                 </ul>
                 <div id="gatilho" class="text-center">
-                    <img src="/img/brasil.gif" alt="Brasil" width="75" height="49">
+                    <img src="/img/flags/br.svg" alt="Brasil" width="75">
                 </div>
             </div>
         </div>
