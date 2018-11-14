@@ -2,21 +2,33 @@
 $id=segment(3);
 if(is_numeric($id)){
     $db=db();
-    //verifica se o mesmo link já foi visitado pelo mesmo ip (proteção contra flood)
-
-    //adiciona a visita ao link
     $where=[
         'id'=>$id
     ];
     $link=$db->get("links","*",$where);
     if($link){
-        $visitas=$link['visitas'];
-        if(is_numeric($visitas)){
-            $link['visitas']=$visitas+1;
-        }else{
-            $link['visitas']=1;
+        //verifica se o mesmo link já foi visitado pelo mesmo ip (proteção contra flood)
+        $whereVisita=[
+            'AND'=>[
+                'link_id'=>$id,
+                'ip'=>getIp()
+            ]
+        ];
+        $count=$db->count('visitas',$whereVisita);
+        if($count<1){
+            //registra a visita
+            $visita=$whereVisita['AND'];
+            $visita['created_at']=time();
+            $db->insert('visitas',$visita);
+            //adiciona a visita ao link
+            $visitas=$link['visitas'];
+            if(is_numeric($visitas)){
+                $link['visitas']=$visitas+1;
+            }else{
+                $link['visitas']=1;
+            }
+            $db->update('links',$link,$where);
         }
-        $db->update('links',$link,$where);
         $linkUpdate=true;
     }else{
         $linkUpdate=false;

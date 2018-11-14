@@ -1,3 +1,3 @@
 <?php
-print 'controller teste';
+print 'teste';
 ?>
