@@ -1,5 +1,5 @@
 <?php
-function linkCreate($linkTitle,$linkUrl,$feedId){
+function linkCreate($linkTitle,$linkUrl,$feedId,$feedLanguage='pt'){
     $link=linkExists($linkUrl);
     if($link){
         $linkId=$link['id'];
@@ -13,7 +13,8 @@ function linkCreate($linkTitle,$linkUrl,$feedId){
             'url'=>$linkUrl,
             'feed_id'=>$feedId,
             'created_at'=>time(),
-            'url_hash'=>md5($linkUrl)
+            'url_hash'=>md5($linkUrl),
+            'language'=>$feedLanguage
         ];
         db()->insert("links",$data);
         print 'add '.$linkTitle.PHP_EOL;

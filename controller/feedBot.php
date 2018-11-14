@@ -53,7 +53,7 @@ function feedExists($url){
 }
 
 function feedLoad(){
-    $feeds=require 'listaDeFeeds.php';
+    $feeds=getFeeds();
     foreach($feeds as $feedName=>$feedUrl){
         $feed=feedExists($feedUrl);
         if($feed){
@@ -79,4 +79,17 @@ function feedUpdateName($feedName,$feedId){
     }else{
         return false;
     }
+}
+
+function getFeeds(){
+    $db=db();
+    $where=[
+        'id[>]'=>0
+    ];
+    $arr=$db->select("feeds","*",$where);
+    $feeds=false;
+    foreach ($arr as $feed) {
+        $feeds[$feed['name']]=$feed['url'];
+    }
+    return $feeds;
 }
