@@ -10,8 +10,11 @@
                 <img src="/img/flags/br.svg" alt="Hacker Brasil" class="logo">
                 Hacker Brasil</a>
                 <div class="nav-collapse collapse">
-                    <div class="navbar-text pull-right" id="carregando">
-
+                    <div class="navbar-text pull-right">
+                        <ul class="nav">
+                            <li><a id="carregando"></a></li>
+                            <li><a target="_blank" href="https://twitter.com/hackerint">Twitter</a></li>
+                        </ul>
                     </div>
                     <ul class="nav" id="navOnline">
                         <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
