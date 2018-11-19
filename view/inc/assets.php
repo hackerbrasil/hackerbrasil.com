@@ -9,4 +9,4 @@
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/flags/br.svg">
 <link rel="apple-touch-icon-precomposed" href="/img/flags/br.svg">
 <link rel="shortcut icon" href="/img/flags/br.svg">
-<meta property="og:image" content="<?php print $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"];?>/img/flags/br.svg">
+<meta property="og:image" content="<?php print $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"];?>/img/flags/br.png">
