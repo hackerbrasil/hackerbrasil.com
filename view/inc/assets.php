@@ -6,3 +6,4 @@
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href=/img/flags/br.svg">
 <link rel="apple-touch-icon-precomposed" href="/img/flags/br.svg">
 <link rel="shortcut icon" href="/img/flags/br.svg">
+<meta property="og:image" content="/img/flags/br.svg">
