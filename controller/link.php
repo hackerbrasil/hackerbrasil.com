@@ -34,7 +34,6 @@ function linkUpdate($linkTitle,$feedId,$linkId){
         'feed_id'=>$feedId,
         'updated_at'=>time()
     ];
-    $linkId=$link['id'];
     $where=[
         'id'=>$linkId
     ];
