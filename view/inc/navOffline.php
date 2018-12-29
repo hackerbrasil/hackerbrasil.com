@@ -13,7 +13,7 @@
                     <div class="navbar-text pull-right visible-desktop">
                         <ul class="nav">
                             <li><a id="carregando"></a></li>
-                        <li><a target="_blank" href="https://twitter.com/hackerint">Twitter</a></li>
+                        <li><a target="_blank" href="https://twitter.com/aicoutodasilva">Twitter</a></li>
                         </ul>
                     </div>
                     <ul class="nav" id="navOnline">
