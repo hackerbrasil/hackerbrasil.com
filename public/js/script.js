@@ -21,6 +21,7 @@ function atualizarADataDosLinks(){//atualizar o cronometro
         var xDate=$(this).attr('x-date');
         var dataText=timeSince(xDate);
         $(this).html(' <small class="badge">'+dataText+'</small>');
+        removerLinksDuplicados();
     });
 }
 
@@ -73,7 +74,6 @@ function gatilhoDoFim(){//carrega links ao chegar no fim da lista
             baixarLinks(nextId);
         }
     });
-    removerLinksDuplicados();
 }
 
 function limparLista(){
@@ -110,7 +110,6 @@ function mostrarLinks(links){
     }else{
         msg(links.msg);
     }
-    removerLinksDuplicados();
 }
 
 function msg(msg){//exibe uma mensagem
