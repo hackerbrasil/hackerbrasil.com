@@ -73,6 +73,7 @@ function gatilhoDoFim(){//carrega links ao chegar no fim da lista
             baixarLinks(nextId);
         }
     });
+    removerLinksDuplicados();
 }
 
 function limparLista(){
@@ -103,7 +104,6 @@ function mostrarLinks(links){
             i++;
         }
         $('#links').append(text);
-        removerLinksDuplicados();
         linkUpdateInterval=setInterval(atualizarADataDosLinks, 100);
         nextId=links.nextId;
         gatilhoDoFim();
