@@ -13,3 +13,5 @@
 
 ## make2
     sh make2 0
+    sh make2 4
+    sh make2 2
