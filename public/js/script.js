@@ -103,6 +103,7 @@ function mostrarLinks(links){
             i++;
         }
         $('#links').append(text);
+        removerLinksDuplicados();
         linkUpdateInterval=setInterval(atualizarADataDosLinks, 100);
         nextId=links.nextId;
         gatilhoDoFim();
@@ -113,6 +114,19 @@ function mostrarLinks(links){
 
 function msg(msg){//exibe uma mensagem
     $('#carregando').html(msg);
+}
+
+function removerLinksDuplicados(){
+    var listForRemove = [];
+    var listOfUniqe = [];
+    $('#links li').each(function () {
+        var text = $(this).text().trim();
+        if (listOfUniqe.indexOf(text) === -1)
+        listOfUniqe.push(text);
+        else
+        listForRemove.push($(this));
+    });
+    $(listForRemove).each(function () { $(this).remove(); });
 }
 
 function timeConverter(UNIX_timestamp){//unix epoch to date
