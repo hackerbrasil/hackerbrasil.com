@@ -120,7 +120,7 @@ function msg(msg){//exibe uma mensagem
 function removerLinksDuplicados(){
     var listForRemove = [];
     var listOfUniqe = [];
-    $('#links').each(function () {
+    $('#links li').each(function () {
         var text = $(this).text().trim();
         if (listOfUniqe.indexOf(text) === -1)
         listOfUniqe.push(text);

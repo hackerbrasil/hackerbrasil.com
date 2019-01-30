@@ -3,7 +3,7 @@
 <script src="/js/jquery.scrolling.js"></script>
 <script src="/js/bootstrap-modalmanager.js"></script>
 <script src="/js/bootstrap-modal.js"></script>
-<script src="/js/script.js?v17"></script>
+<script src="/js/script.js?v18"></script>
 <?php
 if(!isDev()){
     print '<script type="text/javascript">';
