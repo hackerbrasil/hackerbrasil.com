@@ -20,7 +20,7 @@
 
                         <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
                         <li><a href="/top10/sites">Top 10 sites</a></li>
-                        <li><a href="https://hackergaucho.com.br/esta-no-ar-o-hacker-brasil/" target="_blank">Sobre</a></li>
+                        <li><a href="https://aicoutodasilva.github.io/10_mil_links_no_hacker_brasil.html" target="_blank">Sobre</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
