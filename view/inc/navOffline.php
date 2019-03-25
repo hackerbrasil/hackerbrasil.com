@@ -10,18 +10,20 @@
                 <img src="/img/flags/br.svg" alt="Hacker Brasil" class="logo">
                 Hacker Brasil</a>
                 <div class="nav-collapse collapse">
-                    <div class="navbar-text pull-right visible-desktop">
-                        <ul class="nav">
-                            <li><a id="carregando"></a></li>
-                        <li><a target="_blank" href="https://twitter.com/aicoutodasilva">Twitter</a></li>
-                        </ul>
-                    </div>
-                    <ul class="nav" id="navOnline">
 
-                        <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
-                        <li><a href="/top10/sites">Top 10 sites</a></li>
-                        <li><a href="https://aicoutodasilva.github.io/10_mil_links_no_hacker_brasil.html" target="_blank">Sobre</a></li>
-                    </ul>
+                        <ul class="nav  pull-right">
+                            <li><a id="carregando"></a></li>
+                        <li><a target="_blank" href="https://twitter.com/aicouto">Twitter</a></li>
+                        <li><a href="/?night">Night mode</a></li>
+                        </ul>
+                        <ul class="nav" id="navOnline">
+
+                            <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
+                            <li><a href="/top10/sites">Top 10 sites</a></li>
+                            <!-- <li><a href="https://aicoutodasilva.github.io/10_mil_links_no_hacker_brasil.html" target="_blank">Sobre</a></li> -->
+                        </ul>
+
+
                 </div><!--/.nav-collapse -->
             </div>
         </div>
