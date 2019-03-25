@@ -11,17 +11,28 @@
                 Hacker Brasil</a>
                 <div class="nav-collapse collapse">
 
-                        <ul class="nav  pull-right">
-                            <li><a id="carregando"></a></li>
+                    <ul class="nav  pull-right">
+                        <li><a id="carregando"></a></li>
                         <li><a target="_blank" href="https://twitter.com/aicouto">Twitter</a></li>
-                        <li><a href="/?night">Night mode</a></li>
-                        </ul>
-                        <ul class="nav" id="navOnline">
+                        <li>
+                            <?php
+                            if(isset($_GET['night'])){
+                                $href='/';
+                                $text='Night mode <span class="label label-important">ON</span>';
+                            }else{
+                                $href='/?night';
+                                $text='Night mode <span class="label label-inverse">OFF</span>';
+                            }
+                            print '<a href="'.$href.'">'.$text.'</a>';
+                            ?>
+                        </li>
+                    </ul>
+                    <ul class="nav" id="navOnline">
 
-                            <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
-                            <li><a href="/top10/sites">Top 10 sites</a></li>
-                            <!-- <li><a href="https://aicoutodasilva.github.io/10_mil_links_no_hacker_brasil.html" target="_blank">Sobre</a></li> -->
-                        </ul>
+                        <!-- <li><a href="/top10/links">Top 10 links</a></li> -->
+                        <li><a href="/top10/sites">Top 10 sites</a></li>
+                        <!-- <li><a href="https://aicoutodasilva.github.io/10_mil_links_no_hacker_brasil.html" target="_blank">Sobre</a></li> -->
+                    </ul>
 
 
                 </div><!--/.nav-collapse -->
