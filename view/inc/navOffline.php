@@ -18,10 +18,10 @@
                             <?php
                             if(isset($_GET['night'])){
                                 $href='/';
-                                $text='Night mode <span class="label label-important">ON</span>';
+                                $text='Dark mode <span class="label label-important">ON</span>';
                             }else{
                                 $href='/?night';
-                                $text='Night mode <span class="label label-inverse">OFF</span>';
+                                $text='Dark mode <span class="label label-inverse">OFF</span>';
                             }
                             print '<a href="'.$href.'">'.$text.'</a>';
                             ?>
