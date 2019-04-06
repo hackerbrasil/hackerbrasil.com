@@ -28,7 +28,7 @@
         $('#s').val('').focus();
         baixarLinks(nextId);
 
-        $("#s").keyup(function() {
+        $("#s").change(function() {
             buscarLinks($(this).val());
         });
     });
