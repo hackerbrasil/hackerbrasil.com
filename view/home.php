@@ -35,7 +35,9 @@
 
             if (input.data("lastval") != val) {
                 input.data("lastval", val);
-                buscarLinks($(this).val());
+                if(val.length>=1){
+                    buscarLinks($(this).val());
+                }
             }
 
 
