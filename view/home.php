@@ -29,7 +29,16 @@
         baixarLinks(nextId);
 
         $("#s").on("change paste keyup",function() {
-            buscarLinks($(this).val());
+
+            var input = $(this);
+            var val = input.val();
+
+            if (input.data("lastval") != val) {
+                input.data("lastval", val);
+                buscarLinks($(this).val());
+            }
+
+
         });
     });
 </script>
