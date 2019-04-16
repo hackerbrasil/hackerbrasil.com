@@ -8,7 +8,7 @@
             </button>
             <a class="brand" href="/" title="Hacker Brasil">
                 <img src="/img/flags/br.svg" alt="Hacker Brasil" class="logo">
-                Hacker Brasil</a>
+                Hacker Int</a>
                 <div class="nav-collapse collapse">
 
                     <ul class="nav  pull-right">

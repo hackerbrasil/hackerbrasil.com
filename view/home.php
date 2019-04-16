@@ -11,6 +11,11 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
+                <div class="alert alert-info alert-block">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    O <b>HackerBrasil.com</b> agora é <b>HackerInt.com</b>.
+                    Outras novidades virão em breve.
+                </div>
                 <h1><small id="carregando"></small></h1>
                 <label for="s"><small>Buscar pelo título</small></label>
                 <input type="text" class="input-block-level" id="s" placeholder="Buscar...">

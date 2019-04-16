@@ -1,6 +1,6 @@
 <?php
 $data=[
-    'title'=>'Hacker Brasil'
+    'title'=>'Hacker Int'
 ];
 view('home',$data);
 ?>
