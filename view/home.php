@@ -13,7 +13,7 @@
             <div class="span12">
                 <div class="alert alert-info alert-block">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    O <b>HackerBrasil.com</b> agora é <b>HackerInt.com</b>. Outras <a target="_blank" href="https://aicouto.com/hacker-int-a-nova-versao-do-hacker-brasil/">novidades</a> virão em breve, aguardem.
+                    O <b>HackerBrasil.com</b> agora é <b>HackerInt.com</b>. O domínio hackerbrasil.com deixará de funcionar dia 30 de abril de 2019. Outras <a target="_blank" href="https://aicouto.com/hacker-int-a-nova-versao-do-hacker-brasil/">novidades</a> virão em breve, aguardem.
                 </div>
                 <h1><small id="carregando"></small></h1>
                 <label for="s"><small>Buscar pelo título</small></label>
